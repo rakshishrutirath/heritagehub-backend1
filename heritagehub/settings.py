@@ -30,7 +30,12 @@ AI_MODEL_NAME = os.getenv(
 )
 
 MESHY_API_KEY = os.getenv('MESHY_API_KEY')
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
+
+# Updated ALLOWED_HOSTS to include your live Render URL
+ALLOWED_HOSTS = os.getenv(
+    'ALLOWED_HOSTS', 
+    'heritagehub-backend1.onrender.com,127.0.0.1,localhost'
+).split(',')
 
 # Application definition
 
@@ -59,10 +64,11 @@ INSTALLED_APPS = [
     'canvas'
 ]
 
+# CorsMiddleware moved to the VERY TOP to handle preflight OPTIONS requests properly
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -93,7 +99,6 @@ WSGI_APPLICATION = 'heritagehub.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
-
 
 
 # Password validation
@@ -130,8 +135,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
-# STATIC_URL = 'static/'
-
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
@@ -142,7 +145,13 @@ MAILERS = {
     },
 }
 
-CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:5500').split(',')
+# CORS Configuration
+CORS_ALLOWED_ORIGINS = [
+    "https://heritagehub-frontend1.vercel.app",
+    "http://localhost:5173",
+    "http://localhost:3000",
+]
+CORS_ALLOW_CREDENTIALS = True
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -154,7 +163,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # Database: uses local SQLite for development, switches to PostgreSQL automatically
-# in production once DATABASE_URL is set (see Part 14).
+# in production once DATABASE_URL is set.
 DATABASES = {
     'default': dj_database_url.config(
         default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
@@ -165,4 +174,4 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
-}   
+}
