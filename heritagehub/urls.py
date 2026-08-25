@@ -17,6 +17,7 @@ urlpatterns = [
     path('api/canvas/', include('canvas.urls')),
 ]
 
-if settings.DEBUG:
-    from django.conf import settings as s
-    urlpatterns += static(s.MEDIA_URL, document_root=s.BASE_DIR / 'media')
+urlpatterns += static(
+    settings.MEDIA_URL,
+    document_root=settings.MEDIA_ROOT
+)

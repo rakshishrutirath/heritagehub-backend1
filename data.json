@@ -1,0 +1,3353 @@
+[
+{
+  "model": "sessions.session",
+  "pk": "przx4ul0jlyodbn3pez4uvhgwrnmwcdi",
+  "fields": {
+    "session_data": ".eJxVjMEOwiAQRP-FsyFApSsevfcbyLK7StVAUtqT8d9tTQ96mMu8N_NSEZc5x6XJFEdWZ2XV4bdLSA8pG-A7llvVVMs8jUlvit5p00NleV529-8gY8vrWpyDjixbg6cQAgJ4OgogmdT5_hp6g16scx0Am_CNIKUVW-_YkHp_AM9KN5U:1wwbCw:YxxpB3cPalnIF4ANErs0ui7MbxcqqQWk9lSj20sl4mo",
+    "expire_date": "2026-09-02T07:59:34.265Z"
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$BPQ7aAH08a4KEQhIyz0fjR$CRu2KWMi41Toi5iOFvpT5j/AryVY2UU6CXIbytjJeCg=",
+    "last_login": "2026-08-19T07:59:34.258Z",
+    "is_superuser": true,
+    "username": "Rakshi",
+    "first_name": "",
+    "last_name": "",
+    "email": "rakshishrutirath04@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-08-19T07:56:30.080Z",
+    "role": "contributor",
+    "community": null,
+    "bio": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$CZJ2V9hPvXUjfWTfvAg1TL$fZ2fcpz1ynkQvAsQ1PmwvBHLKCaW5MO4iLoXQJYD7Ug=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "testuser1",
+    "first_name": "",
+    "last_name": "",
+    "email": "test1@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-19T12:24:01.899Z",
+    "role": "contributor",
+    "community": "Koraput Weavers",
+    "bio": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$zvE977vIYDHI9KDb69VDr4$Bwl8uKYTQQ4ArZK7zzKYeIoqwV9Afp9bNH59Okn+C6k=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "rajesh",
+    "first_name": "",
+    "last_name": "",
+    "email": "dpsrajesh841@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-22T08:10:36.327Z",
+    "role": "contributor",
+    "community": null,
+    "bio": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$BVB4FetuvcM3AKtQzCcGfi$Y/fTGI/ubNEBasC/MxJYS6/NwvMGwtGTQw2JKPXTPU0=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@example.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-08-25T16:59:04.800Z",
+    "role": "contributor",
+    "community": null,
+    "bio": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "heritage.category",
+  "pk": 1,
+  "fields": {
+    "name": "Craft"
+  }
+},
+{
+  "model": "heritage.language",
+  "pk": 1,
+  "fields": {
+    "name": "Odia"
+  }
+},
+{
+  "model": "heritage.location",
+  "pk": 1,
+  "fields": {
+    "village_or_area": "Pipili",
+    "district": "Puri",
+    "state": "Odisha"
+  }
+},
+{
+  "model": "heritage.heritagerecord",
+  "pk": "250ef9be-0d00-40e5-a1c8-7458a44ccff7",
+  "fields": {
+    "title": "Kotpad Natural Dye Weaving",
+    "description": "A traditional handloom weaving technique using natural dyes.",
+    "category": 1,
+    "language": 1,
+    "location": 1,
+    "contributor": [
+      "testuser1"
+    ],
+    "image": "",
+    "audio": "",
+    "ai_summary": "This submission describes a traditional handloom weaving technique that relies on natural dyes. It represents sustainable indigenous practices and cultural textile heritage.",
+    "ai_tags": "handloom, weaving, natural dyes, traditional craft, textile heritage, sustainability",
+    "ai_translation": "A traditional handloom weaving technique using natural dyes.",
+    "consent_given": true,
+    "status": "approved",
+    "verified_by": [
+      "testuser1"
+    ],
+    "qr_code": "qr_codes/250ef9be-0d00-40e5-a1c8-7458a44ccff7.png",
+    "created_at": "2026-08-19T12:39:10.642Z"
+  }
+},
+{
+  "model": "heritage.heritagerecord",
+  "pk": "a7f8e984-99f2-4c04-a79a-e44713f4cabd",
+  "fields": {
+    "title": "Pipili Applique Work",
+    "description": "Traditional applique handicraft of Pipili, Odisha.",
+    "category": 1,
+    "language": 1,
+    "location": 1,
+    "contributor": [
+      "rajesh"
+    ],
+    "image": "",
+    "audio": "",
+    "ai_summary": null,
+    "ai_tags": null,
+    "ai_translation": null,
+    "consent_given": true,
+    "status": "approved",
+    "verified_by": [
+      "rajesh"
+    ],
+    "qr_code": "qr_codes/a7f8e984-99f2-4c04-a79a-e44713f4cabd.png",
+    "created_at": "2026-08-22T08:12:04.533Z"
+  }
+},
+{
+  "model": "heritage.heritagerecord",
+  "pk": "dfb73b05-4eed-4a5a-bc7b-52586b401327",
+  "fields": {
+    "title": "Test Heritage Record",
+    "description": "This is a test heritage record for final system testing.",
+    "category": 1,
+    "language": 1,
+    "location": 1,
+    "contributor": [
+      "rajesh"
+    ],
+    "image": "",
+    "audio": "",
+    "ai_summary": "This submission serves as a sample entry intended for evaluating the performance and integrity of the cultural heritage preservation system. It provides a standardized baseline for testing multi-language data processing and archival workflows.",
+    "ai_tags": "system test, digital archive, heritage preservation, test record",
+    "ai_translation": "This is a test heritage record for final system testing.",
+    "consent_given": true,
+    "status": "approved",
+    "verified_by": [
+      "rajesh"
+    ],
+    "qr_code": "qr_codes/dfb73b05-4eed-4a5a-bc7b-52586b401327.png",
+    "created_at": "2026-08-22T09:10:25.023Z"
+  }
+},
+{
+  "model": "community.verificationlog",
+  "pk": 1,
+  "fields": {
+    "record": "250ef9be-0d00-40e5-a1c8-7458a44ccff7",
+    "reviewer": [
+      "testuser1"
+    ],
+    "action": "approved",
+    "comment": "Looks good, verified.",
+    "timestamp": "2026-08-19T12:54:07.655Z"
+  }
+},
+{
+  "model": "community.verificationlog",
+  "pk": 2,
+  "fields": {
+    "record": "a7f8e984-99f2-4c04-a79a-e44713f4cabd",
+    "reviewer": [
+      "rajesh"
+    ],
+    "action": "approved",
+    "comment": "Heritage record verified by community reviewer.",
+    "timestamp": "2026-08-22T08:26:25.811Z"
+  }
+},
+{
+  "model": "community.verificationlog",
+  "pk": 3,
+  "fields": {
+    "record": "dfb73b05-4eed-4a5a-bc7b-52586b401327",
+    "reviewer": [
+      "rajesh"
+    ],
+    "action": "approved",
+    "comment": "Heritage record verified by community reviewer.",
+    "timestamp": "2026-08-22T09:11:06.065Z"
+  }
+},
+{
+  "model": "shopping.productcategory",
+  "pk": 1,
+  "fields": {
+    "name": "Handicrafts"
+  }
+},
+{
+  "model": "shopping.productcategory",
+  "pk": 2,
+  "fields": {
+    "name": "Tribal Art"
+  }
+},
+{
+  "model": "shopping.productcategory",
+  "pk": 3,
+  "fields": {
+    "name": "Jewellery"
+  }
+},
+{
+  "model": "shopping.product",
+  "pk": "052106be-182e-4af6-a673-c596e6411aa5",
+  "fields": {
+    "name": "Wooden Art Tribal",
+    "description": "Woodle India Odisha Tribal Woman Pre Marked MDF Design 1",
+    "price": "325.00",
+    "category": 2,
+    "image": "shopping_products/odiawomentribalart.webp",
+    "buy_url": "https://woodleindia.com/products/odisha-tribal-woman-pre-marked-mdf-design-1?variant=48676453810449&country=IN&currency=INR&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&srsltid=AfmBOooi8A4oWtPfXh_9jmKu21I1mOaxwd2tSXTBbGYHEcm6Py0-Ri_rJCc",
+    "display_order": 3,
+    "is_active": true,
+    "created_at": "2026-08-20T14:53:00.444Z"
+  }
+},
+{
+  "model": "shopping.product",
+  "pk": "19bebd10-dd2f-4f65-9428-365980e9c830",
+  "fields": {
+    "name": "Tribal Folk Mask",
+    "description": "Odisha handicraft Folk Art Lion Face Mask for Home – Powerful Handcrafted Decor",
+    "price": "500.00",
+    "category": 2,
+    "image": "shopping_products/tribalfolkart.webp",
+    "buy_url": "https://rashmisarees.com/products/odisha-folk-art-lion-face-mask-for-home-powerful-handcrafted-decor-buy-now?variant=51516154806554&country=IN&currency=INR&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&srsltid=AfmBOoqYt33_0WgKbYazL2_9TY3iFVBZiu8uMM7fwRQdasfwoDvy-fvKaOI",
+    "display_order": 2,
+    "is_active": true,
+    "created_at": "2026-08-20T14:54:47.482Z"
+  }
+},
+{
+  "model": "shopping.product",
+  "pk": "28df0011-2ee2-4a49-8680-2b2a2f1c69d4",
+  "fields": {
+    "name": "Handmade Dokra Earrings with Ashoke Assemble",
+    "description": "Tribal Odisha Dokra Threadwork Handmade Earrings Ashoka Assemble - Celebrating Crafts Of Odisha NHD/572/11",
+    "price": "590.00",
+    "category": 3,
+    "image": "shopping_products/ashokadokraearings_MeYvrXR.webp",
+    "buy_url": "https://itokri.com/products/tribal-odisha-dokra-threadwork-handmade-earrings-86-2026-144-1-86?variant=45186587164867&srsltid=AfmBOooCCQ1Df6wI-D9F0HDo7Hr692YMRY0804ByMFNPCKJc7hmtEw4pRXw",
+    "display_order": 9,
+    "is_active": true,
+    "created_at": "2026-08-20T14:43:43.208Z"
+  }
+},
+{
+  "model": "shopping.product",
+  "pk": "3bcb98d0-7f39-4228-adaf-9acf6d60b78f",
+  "fields": {
+    "name": "Tribal HandCrafted Balti",
+    "description": "Patachitra Aluminium Balti Multi Coloured Tribal Design",
+    "price": "750.00",
+    "category": 1,
+    "image": "shopping_products/aluminiumpatachitrabalti.webp",
+    "buy_url": "https://www.indoscraft.com/products/patachitra-aluminium-balti-multi-coloured-tribal-design-ODPTC00402?srsltid=AfmBOoqxqcj7_611z87RaWldgOg6H3NlfIevsBLLz6bK_uGxEYY6JChC1Ec",
+    "display_order": 8,
+    "is_active": true,
+    "created_at": "2026-08-20T14:46:15.008Z"
+  }
+},
+{
+  "model": "shopping.product",
+  "pk": "460a6d6a-d3e2-478c-adba-f06ebb75de11",
+  "fields": {
+    "name": "Tribal Coconut Hanging",
+    "description": "Tribal Painting on a Hanging Coconut (Purely Handicrafted)",
+    "price": "645.75",
+    "category": 1,
+    "image": "shopping_products/tribalcoconutart.webp",
+    "buy_url": "https://www.dollsofindia.com/inr/product/tribal-painting-on-hanging-coconut-SI23.html?srsltid=AfmBOoqHkmHx0RR82R0A-D-fxh6Bg84HlwcBP4cS7Zq3XYiofU-zEU6rWxo",
+    "display_order": 7,
+    "is_active": true,
+    "created_at": "2026-08-20T14:50:19.108Z"
+  }
+},
+{
+  "model": "shopping.product",
+  "pk": "7db076fe-3df8-4af5-aef5-58e9d75962cc",
+  "fields": {
+    "name": "Patachitra Painting",
+    "description": "Odisha handicraft Anicient Patachitra Painting Art form of Odisha",
+    "price": "8900.00",
+    "category": 1,
+    "image": "shopping_products/patachitrapainting.webp",
+    "buy_url": "https://rashmisarees.com/products/odisha-handicraft-anicient-patachitra-painting-art-form-of-odisha-online-shopping?variant=50411320377626&country=IN&currency=INR&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&srsltid=AfmBOoo06kBoD35F5rRMPHxf7DPCir19h9D8BV05WK0EQvGmPUy9-_QIQ6Y",
+    "display_order": 5,
+    "is_active": true,
+    "created_at": "2026-08-20T14:48:20.606Z"
+  }
+},
+{
+  "model": "shopping.product",
+  "pk": "a976769f-9c29-49d0-a84d-84abbe214037",
+  "fields": {
+    "name": "Dhokra Chocker (Necklace with earrings)",
+    "description": "Handcrafted Odisha Tribal Dhokra Choker Necklace with Earrings",
+    "price": "999.00",
+    "category": 3,
+    "image": "shopping_products/Dhokra_Chocker.webp",
+    "buy_url": "https://www.odishicrafts.com/product/handcrafted-odisha-tribal-dhokra-choker-necklace-with-earrings/",
+    "display_order": 6,
+    "is_active": true,
+    "created_at": "2026-08-19T22:22:27.929Z"
+  }
+},
+{
+  "model": "shopping.product",
+  "pk": "de85a5b4-2fa9-46a7-aad9-9fde561e53c2",
+  "fields": {
+    "name": "Dhokra (Odisha Tribal Bracelet)",
+    "description": "Handcrafted Odisha Tribal Dhokra Craft Bracelet – Lalita",
+    "price": "250.00",
+    "category": 3,
+    "image": "shopping_products/dhokra.webp",
+    "buy_url": "https://adicrafts.in/product/pure-handmade-dhokra-tribal-bracelet-chb-10/",
+    "display_order": 4,
+    "is_active": true,
+    "created_at": "2026-08-19T22:24:24.594Z"
+  }
+},
+{
+  "model": "shopping.product",
+  "pk": "e506b3cc-fc76-4c99-bb85-a880fd2b6bc7",
+  "fields": {
+    "name": "Dhokra Dance Necklace",
+    "description": "Tribal Woman Dokra Necklace of a Tribal Dancer",
+    "price": "1098.86",
+    "category": 3,
+    "image": "shopping_products/tribaldhokranecklace.webp",
+    "buy_url": "https://ritikart.com/products/tribal-dokra-necklace-of-a-tribal-woman-dancer?srsltid=AfmBOorj1rloFAuv5JLxHyT82ZkW9Pnjz0BPpzZ5pF0zbRpyhKgZIXM9umA",
+    "display_order": 1,
+    "is_active": true,
+    "created_at": "2026-08-20T14:41:15.050Z"
+  }
+},
+{
+  "model": "explore.exploreplace",
+  "pk": "2cfa4658-94cd-42ab-98f5-66ec606cc81f",
+  "fields": {
+    "name": "Udayagiri–Khandagiri Caves",
+    "district": "Khordha",
+    "short_description": "Udayagiri and Khandagiri are ancient rock-cut cave complexes near Bhubaneswar, known for their historical inscriptions, sculptures, Jain heritage, and remarkable rock-cut architecture.",
+    "main_image": "explore/main/udaygiri-khandagiricavesmainimag.webp",
+    "culture_title": "Ancient Jain Heritage & Rock-Cut Architecture",
+    "culture_description": "Udayagiri and Khandagiri are ancient rock-cut cave complexes near Bhubaneswar that represent an important part of Odisha's early Jain heritage.\r\n\r\nThe caves were carved into natural hills and were used by Jain ascetics. Many of them contain inscriptions, sculptural panels, decorative carvings, and architectural features that provide insight into the religious and cultural life of ancient Odisha.\r\n\r\nThe complex is especially known for its historic caves, rock-cut chambers, and detailed stone carvings, making it an important archaeological and cultural landmark.",
+    "culture_image": "explore/culture/udajgiriculimag.jpg",
+    "food_title": "Traditional Food of Bhubaneswar Region",
+    "food_description": "The food traditions around Udayagiri–Khandagiri reflect the authentic flavours of Odisha.\r\n\r\nTraditional Meals:\r\nRice, dal, seasonal vegetables and traditional Odia curries form an important part of everyday meals.\r\n\r\nDalma:\r\nDalma is a traditional Odia dish prepared with lentils and vegetables, seasoned with aromatic spices.\r\n\r\nPakhala:\r\nPakhala is a popular rice-based dish especially enjoyed during Odisha's warmer months and is commonly served with vegetables and traditional side dishes.\r\n\r\nTraditional Sweets:\r\nChhena Poda, Rasabali and other traditional Odia sweets represent the rich culinary heritage of the region.",
+    "food_image": "explore/food/odia_dalma.jpg",
+    "story_audio": "",
+    "display_order": 2,
+    "is_active": true,
+    "created_at": "2026-08-20T21:14:28.947Z"
+  }
+},
+{
+  "model": "explore.exploreplace",
+  "pk": "7b0ed9b0-0c1b-4f43-a6c2-e39b6ce25897",
+  "fields": {
+    "name": "Shree Jagannath Temple, Puri",
+    "district": "Puri",
+    "short_description": "Shree Jagannath Temple in Puri is one of Odisha's most significant religious and cultural landmarks. Dedicated to Lord Jagannath, the temple is deeply connected with Odisha's traditions, festivals, art, cuisine and cultural identity.",
+    "main_image": "explore/main/purimandirext.jpg",
+    "culture_title": "Jagannath Culture & Living Traditions",
+    "culture_description": "Shree Jagannath Temple is one of Odisha's most important religious and cultural landmarks and is deeply connected with the identity and traditions of Puri.\r\n\r\nJagannath culture centres around Lord Jagannath, along with Lord Balabhadra and Devi Subhadra. The temple preserves centuries-old rituals, festivals, traditional art, music and community practices.\r\n\r\nThe annual Rath Yatra is one of its most celebrated traditions, during which the three deities travel in magnificent wooden chariots. Jagannath culture has also influenced Odisha's literature, painting, dance, food traditions and everyday cultural life.",
+    "culture_image": "explore/culture/jagaathbalabhadrasudhadra.jpg",
+    "food_title": "Mahaprasad – Sacred Food Tradition",
+    "food_description": "Mahaprasad is an important part of the religious and cultural traditions associated with Shree Jagannath Temple.\r\n\r\nTemple Cuisine:\r\nTraditional food is prepared as an offering to the deities following established temple customs and cooking practices.\r\n\r\nMahaprasad:\r\nAfter being offered to the deities, the sacred food is known as Mahaprasad. It is shared among devotees and represents devotion, community and equality.\r\n\r\nTraditional Preparation:\r\nThe temple kitchen is famous for its traditional cooking practices, including the use of earthen pots. Rice, dal, vegetables, sweets and other preparations form part of the temple food tradition.\r\n\r\nCultural Significance:\r\nMahaprasad is more than food; it forms an important part of Jagannath culture and Odisha's living culinary heritage.",
+    "food_image": "explore/food/mahaprasad.jpg",
+    "story_audio": "",
+    "display_order": 1,
+    "is_active": true,
+    "created_at": "2026-08-20T21:32:27.591Z"
+  }
+},
+{
+  "model": "explore.exploreplace",
+  "pk": "c9f71dbc-2da9-4842-b5e0-161709a7465d",
+  "fields": {
+    "name": "Konark Sun Temple",
+    "district": "Puri",
+    "short_description": "The Konark Sun Temple is a historic temple renowned for its monumental stone architecture and intricate carvings.",
+    "main_image": "explore/main/koanrk_presentdayimage.avif",
+    "culture_title": "The Konark Sun Temple",
+    "culture_description": "Konark is a historic coastal town in the Puri district of Odisha, India, globally renowned for its 13th-century Sun Temple, a UNESCO World Heritage Site. The town's name originates from the Sanskrit words Kona (corner) and Arka (sun), literally translating to the \"Corner of the Sun\". Together with Bhubaneswar and Puri, Konark forms the \"Golden Triangle\" of Odisha tourism.",
+    "culture_image": "explore/culture/konarkcarving_iamge.jpg",
+    "food_title": "Traditional Food of Puri Region",
+    "food_description": "Puri–Konark cuisine is a blend of sacred temple food and traditional coastal flavours.\r\n\r\nSacred Temple Food:\r\nRice, dal, vegetables, and traditional dishes are prepared using simple ingredients and age-old cooking methods. Temple cuisine traditionally avoids onion and garlic.\r\n\r\nCoastal Cuisine:\r\nThe coastal region is known for fresh fish, prawns, and crab dishes, often prepared with mustard, coconut, and traditional spices.\r\n\r\nSweet Heritage:\r\nPopular Odia sweets include Chhena Poda, Khaja, and other milk-based delicacies that form an important part of the region's culinary heritage.\r\n\r\nFlavour Profile:\r\nThe cuisine is simple, aromatic, and earthy, commonly using mustard oil, panch phoron (five-spice blend), and fresh coconut.",
+    "food_image": "explore/food/purifood.jpg",
+    "story_audio": "",
+    "display_order": 3,
+    "is_active": true,
+    "created_at": "2026-08-20T20:37:20.711Z"
+  }
+},
+{
+  "model": "explore.exploreplace",
+  "pk": "e9215066-9271-464b-97d0-ec16f0c1f306",
+  "fields": {
+    "name": "Raghurajpur Heritage Village",
+    "district": "Puri",
+    "short_description": "Raghurajpur is a traditional heritage crafts village in Odisha, renowned for its Pattachitra paintings, palm-leaf art, traditional crafts, and rich cultural traditions.",
+    "main_image": "explore/main/raghurajpurviilage.webp",
+    "culture_title": "Living Heritage of Raghurajpur",
+    "culture_description": "Raghurajpur is a heritage crafts village in Odisha known for preserving traditional art forms through generations of artisan families.\r\n\r\nThe village is especially famous for Pattachitra, a traditional painting style created on prepared cloth using natural colours and intricate decorative patterns.\r\n\r\nArtists of Raghurajpur also practise palm-leaf engraving, traditional mask making, wooden crafts and other forms of Odisha folk art. The village represents a living cultural ecosystem where traditional knowledge, craftsmanship and everyday community life remain closely connected.",
+    "culture_image": "explore/culture/raghurajpurpatachitra.webp",
+    "food_title": "Traditional Food of Raghurajpur",
+    "food_description": "Raghurajpur's food traditions reflect the simple and authentic flavours of rural Odisha.\r\n\r\nTraditional Meals:\r\nDaily meals commonly include rice, dal, seasonal vegetables and traditional Odia preparations made with locally available ingredients.\r\n\r\nPakhala:\r\nPakhala, prepared from cooked rice soaked in water, is a popular traditional dish especially enjoyed during the summer months. It is commonly served with vegetables and other side dishes.\r\n\r\nTraditional Sweets:\r\nOdia sweets such as Khaja, Chhena Poda and other locally prepared delicacies are part of the region's culinary tradition.\r\n\r\nFood Heritage:\r\nThe cuisine represents Odisha's traditional village lifestyle, where simple ingredients, seasonal produce and generations-old cooking practices remain important.",
+    "food_image": "explore/food/pakhala.jpg",
+    "story_audio": "",
+    "display_order": 4,
+    "is_active": true,
+    "created_at": "2026-08-20T20:58:33.024Z"
+  }
+},
+{
+  "model": "explore.exploreera",
+  "pk": 1,
+  "fields": {
+    "place": "c9f71dbc-2da9-4842-b5e0-161709a7465d",
+    "era_name": "13th Century – Original Era",
+    "year": 1250,
+    "image": "explore/eras/hisorickonark.jpg",
+    "description": "Konark Sun Temple was built in the 13th century during the reign of King Narasimhadeva I.",
+    "order": 1
+  }
+},
+{
+  "model": "explore.exploreera",
+  "pk": 2,
+  "fields": {
+    "place": "c9f71dbc-2da9-4842-b5e0-161709a7465d",
+    "era_name": "Present Day – Preserved Heritage",
+    "year": 2026,
+    "image": "explore/eras/currentkonark.jpg",
+    "description": "Today, the Konark Sun Temple stands as one of Odisha's most\r\nimportant preserved heritage monuments. Although parts of the\r\noriginal structure have been lost over time, conservation efforts\r\ncontinue to protect its architecture, sculptures, and cultural legacy.",
+    "order": 2
+  }
+},
+{
+  "model": "explore.exploreera",
+  "pk": 3,
+  "fields": {
+    "place": "e9215066-9271-464b-97d0-ec16f0c1f306",
+    "era_name": "Traditional Heritage Era",
+    "year": 1900,
+    "image": "explore/eras/raghurajpuroldera.webp",
+    "description": "Raghurajpur developed as a traditional artisan village where generations of families practised and preserved Odisha's indigenous art forms. Pattachitra painting, palm-leaf engraving, mask making and other crafts became deeply connected with the everyday life and cultural identity of the village.",
+    "order": 1
+  }
+},
+{
+  "model": "explore.exploreera",
+  "pk": 4,
+  "fields": {
+    "place": "e9215066-9271-464b-97d0-ec16f0c1f306",
+    "era_name": "Present Day – Living Heritage Village",
+    "year": 2026,
+    "image": "explore/eras/raghurajpurnowera.jpg",
+    "description": "Today, Raghurajpur continues to thrive as a living heritage village where traditional art and everyday community life exist together. Artisan families continue to practise Pattachitra painting, palm-leaf engraving, mask making and other traditional crafts while sharing these cultural traditions with visitors and future generations.",
+    "order": 2
+  }
+},
+{
+  "model": "explore.exploreera",
+  "pk": 5,
+  "fields": {
+    "place": "2cfa4658-94cd-42ab-98f5-66ec606cc81f",
+    "era_name": "Ancient Kalinga Era",
+    "year": 100,
+    "image": "explore/eras/udaygiri-khandagiriold.jpg",
+    "description": "During the ancient Kalinga period, the Udayagiri and Khandagiri hills developed as important centres associated with Jain ascetics. Rock-cut caves, inscriptions, sculptures and chambers created in the hills reflect the religious, artistic and architectural traditions of ancient Odisha.",
+    "order": 1
+  }
+},
+{
+  "model": "explore.exploreera",
+  "pk": 6,
+  "fields": {
+    "place": "2cfa4658-94cd-42ab-98f5-66ec606cc81f",
+    "era_name": "Present Day – Preserved Ancient Heritage",
+    "year": 2026,
+    "image": "explore/eras/udaygiri-khandagirinew.webp",
+    "description": "Today, the Udayagiri and Khandagiri Caves remain important archaeological and cultural landmarks of Odisha. Their rock-cut chambers, inscriptions, sculptures and Jain heritage continue to provide visitors with a glimpse into the region's ancient history while preservation efforts help protect the site for future generations.",
+    "order": 2
+  }
+},
+{
+  "model": "explore.exploreera",
+  "pk": 7,
+  "fields": {
+    "place": "7b0ed9b0-0c1b-4f43-a6c2-e39b6ce25897",
+    "era_name": "Historic Ganga Dynasty Era",
+    "year": 1200,
+    "image": "explore/eras/oldpuri.jpg",
+    "description": "During the Eastern Ganga dynasty, the great temple at Puri developed into an important centre of worship and cultural life. The temple became closely associated with Lord Jagannath and traditions that would deeply influence Odisha's religious, artistic and cultural identity.",
+    "order": 1
+  }
+},
+{
+  "model": "explore.exploreera",
+  "pk": 8,
+  "fields": {
+    "place": "7b0ed9b0-0c1b-4f43-a6c2-e39b6ce25897",
+    "era_name": "Present Day – Living Jagannath Heritage",
+    "year": 2026,
+    "image": "explore/eras/purinow.jpg",
+    "description": "Today, Shree Jagannath Temple remains one of Odisha's most important religious and cultural centres. Centuries-old rituals, festivals, Mahaprasad traditions and the annual Rath Yatra continue to keep Jagannath culture alive while connecting generations of devotees with Odisha's living heritage.",
+    "order": 2
+  }
+},
+{
+  "model": "learn.song",
+  "pk": 1,
+  "fields": {
+    "title": "Alta makhi",
+    "genre": "sambalpuri",
+    "artist": "Pankaj Tandi, Pratham Kumbhar, Kiran Dash, and Bijay Anand Sahu",
+    "region": "Sambalpur",
+    "image": "learn_songs_images/alta_makhi.jpg",
+    "youtube_url": "https://www.youtube.com/watch?v=KKdZ7klDYqE",
+    "audio": "learn_songs/Alta_MakhiKoshalWorld.Com.mp3",
+    "lyrics": "",
+    "cultural_context": "",
+    "created_at": "2026-08-19T23:59:44.151Z"
+  }
+},
+{
+  "model": "learn.song",
+  "pk": 2,
+  "fields": {
+    "title": "Rani Guri",
+    "genre": "sambalpuri",
+    "artist": "Mantu Chhuria and Aseema Panda",
+    "region": "Sambalpur",
+    "image": "learn_songs_images/rani_guri.jpg",
+    "youtube_url": "https://www.youtube.com/watch?v=-cFAKpSoeDs",
+    "audio": "learn_songs/Rani_GuriKoshalWorld.Com.mp3",
+    "lyrics": "",
+    "cultural_context": "",
+    "created_at": "2026-08-20T00:08:16.274Z"
+  }
+},
+{
+  "model": "learn.song",
+  "pk": 3,
+  "fields": {
+    "title": "Rim jhim pani",
+    "genre": "sambalpuri",
+    "artist": "Aseema Panda",
+    "region": "Sambalpur",
+    "image": "learn_songs_images/rimjhim_pani.jpg",
+    "youtube_url": "https://www.youtube.com/watch?v=Wr3Fn7bj-QU",
+    "audio": "learn_songs/Rim-Jhim-Pani-Barsu-Thila-Iswara-Deep-Papular-Song.mp3",
+    "lyrics": "",
+    "cultural_context": "",
+    "created_at": "2026-08-20T07:59:19.709Z"
+  }
+},
+{
+  "model": "learn.song",
+  "pk": 4,
+  "fields": {
+    "title": "Keshari loo..",
+    "genre": "sambalpuri",
+    "artist": "Prakash Jal",
+    "region": "Sambalpur",
+    "image": "learn_songs_images/keshari_lo.jpg",
+    "youtube_url": "https://www.youtube.com/watch?v=tYlxGIG78kM",
+    "audio": "learn_songs/Keshari_Lo_Prakash_JalKoshalWorld.Com.mp3",
+    "lyrics": "",
+    "cultural_context": "",
+    "created_at": "2026-08-20T08:02:50.316Z"
+  }
+},
+{
+  "model": "learn.song",
+  "pk": 5,
+  "fields": {
+    "title": "Mo jaga Kalia Re",
+    "genre": "bhajan",
+    "artist": "Sourav Bharadwaj",
+    "region": "",
+    "image": "learn_songs_images/mo_jaga_kalia_re.jpg",
+    "youtube_url": "https://www.youtube.com/watch?v=nyzI8Oqa7lo",
+    "audio": "learn_songs/Mo_Jaga_KaliaKoshalWorld.Com.mp3",
+    "lyrics": "",
+    "cultural_context": "",
+    "created_at": "2026-08-20T08:36:29.839Z"
+  }
+},
+{
+  "model": "learn.song",
+  "pk": 6,
+  "fields": {
+    "title": "Mate Kari de re Nandalala bhabapurna jagannatha",
+    "genre": "bhajan",
+    "artist": "Md.Aziz",
+    "region": "",
+    "image": "learn_songs_images/mate_karide_re_nanda_lala.jpg",
+    "youtube_url": "https://www.youtube.com/watch?v=bijtldGSor4",
+    "audio": "learn_songs/Mate-Kari-De-OdiaFresh.Com.mp3",
+    "lyrics": "",
+    "cultural_context": "",
+    "created_at": "2026-08-20T08:39:28.012Z"
+  }
+},
+{
+  "model": "learn.song",
+  "pk": 7,
+  "fields": {
+    "title": "Jaga to Kala ranga",
+    "genre": "bhajan",
+    "artist": "Sourav Bharadwaj",
+    "region": "",
+    "image": "learn_songs_images/jaga_to_kala_ranga.jpg",
+    "youtube_url": "https://www.youtube.com/watch?v=lUMgD0boUCk",
+    "audio": "learn_songs/Jaga-To-Kala-Ranga-OdiaFresh.Com.mp3",
+    "lyrics": "",
+    "cultural_context": "",
+    "created_at": "2026-08-20T08:42:24.030Z"
+  }
+},
+{
+  "model": "learn.song",
+  "pk": 8,
+  "fields": {
+    "title": "Tora Daya hele chora malaya bahe",
+    "genre": "bhajan",
+    "artist": "Sunil Kumar",
+    "region": "",
+    "image": "learn_songs_images/toro_daya_hele_chora_malaya_bahe.jpg",
+    "youtube_url": "https://www.youtube.com/watch?v=afgf8QZ5pqI&list=RDafgf8QZ5pqI&start_radio=1",
+    "audio": "learn_songs/Tora-Daya-Hele-Chora-Malaya-Bahe-OdiaFresh.Com.mp3",
+    "lyrics": "",
+    "cultural_context": "",
+    "created_at": "2026-08-20T08:46:01.309Z"
+  }
+},
+{
+  "model": "learn.song",
+  "pk": 9,
+  "fields": {
+    "title": "Lusadini Lagne Enej",
+    "genre": "santali",
+    "artist": "Unknown",
+    "region": "",
+    "image": "learn_songs_images/lusadini_lagne_enej.jpg",
+    "youtube_url": "https://www.youtube.com/watch?v=_cunGk_sYF0",
+    "audio": "learn_songs/LUSADIHI_LAGNE_ENEJ.mp3",
+    "lyrics": "",
+    "cultural_context": "",
+    "created_at": "2026-08-20T08:59:10.661Z"
+  }
+},
+{
+  "model": "learn.song",
+  "pk": 10,
+  "fields": {
+    "title": "Hisid Halay Hoy",
+    "genre": "santali",
+    "artist": "Uday Hansda and Sumita Soren",
+    "region": "",
+    "image": "learn_songs_images/hisid_halay_hoy.jpg",
+    "youtube_url": "https://www.youtube.com/watch?v=gQ-jRx3PoBo",
+    "audio": "learn_songs/HISID_HALAY_HOY.mp3",
+    "lyrics": "",
+    "cultural_context": "",
+    "created_at": "2026-08-20T09:03:12.336Z"
+  }
+},
+{
+  "model": "learn.song",
+  "pk": 11,
+  "fields": {
+    "title": "Lagne Serenj",
+    "genre": "santali",
+    "artist": "Unknown",
+    "region": "",
+    "image": "learn_songs_images/lagne_serenj.jpg",
+    "youtube_url": "https://www.youtube.com/watch?v=_ylvch6wR3M",
+    "audio": "learn_songs/Lagne_Serenj_Santali_2.mp3",
+    "lyrics": "",
+    "cultural_context": "",
+    "created_at": "2026-08-20T09:05:04.284Z"
+  }
+},
+{
+  "model": "learn.song",
+  "pk": 12,
+  "fields": {
+    "title": "Pan baha",
+    "genre": "santali",
+    "artist": "Biswajit & Sarathi Hembram",
+    "region": "",
+    "image": "learn_songs_images/pan_baha.jpg",
+    "youtube_url": "https://www.youtube.com/watch?v=Z7CDtFKQSfc",
+    "audio": "learn_songs/PAN_BAHA_II_NEW_SANTALI_LANGE_SONG_2024_II_SINGER_VERSION__sonamusicproduction_2.mp3",
+    "lyrics": "",
+    "cultural_context": "",
+    "created_at": "2026-08-20T09:09:53.360Z"
+  }
+},
+{
+  "model": "learn.song",
+  "pk": 13,
+  "fields": {
+    "title": "Tui Mor Rani Re",
+    "genre": "koraputia",
+    "artist": "Nakul Nag",
+    "region": "",
+    "image": "learn_songs_images/tui_mor_rani_re.jpg",
+    "youtube_url": "https://www.youtube.com/watch?v=PFqo2BDCs1E",
+    "audio": "learn_songs/Tui_Mor_Rani_Re.mp3",
+    "lyrics": "",
+    "cultural_context": "",
+    "created_at": "2026-08-20T09:18:10.025Z"
+  }
+},
+{
+  "model": "learn.song",
+  "pk": 14,
+  "fields": {
+    "title": "Rinjodi",
+    "genre": "koraputia",
+    "artist": "Unknown",
+    "region": "",
+    "image": "learn_songs_images/rinjodi.jpg",
+    "youtube_url": "https://www.youtube.com/watch?v=0kHO9QfHKBw&list=RD0kHO9QfHKBw&start_radio=1",
+    "audio": "learn_songs/Rinjodi.mp3",
+    "lyrics": "",
+    "cultural_context": "",
+    "created_at": "2026-08-20T09:20:05.791Z"
+  }
+},
+{
+  "model": "learn.song",
+  "pk": 15,
+  "fields": {
+    "title": "Chi chi re Nani",
+    "genre": "koraputia",
+    "artist": "Satya Adhikari",
+    "region": "",
+    "image": "learn_songs_images/chi_re_noni.jpg",
+    "youtube_url": "https://www.youtube.com/watch?v=kWiT7HS1ILk",
+    "audio": "learn_songs/ChiChiCHiReNani.mp3",
+    "lyrics": "",
+    "cultural_context": "",
+    "created_at": "2026-08-20T09:22:55.244Z"
+  }
+},
+{
+  "model": "learn.song",
+  "pk": 16,
+  "fields": {
+    "title": "Mahuriya Dada Re",
+    "genre": "koraputia",
+    "artist": "Sukhadev Barik",
+    "region": "",
+    "image": "learn_songs_images/dhemsa.jpg",
+    "youtube_url": "https://www.youtube.com/watch?v=xaUEpDw7Nhs",
+    "audio": "learn_songs/Moira-Dada-OdiaFresh.Com.mp3",
+    "lyrics": "",
+    "cultural_context": "",
+    "created_at": "2026-08-20T09:27:21.905Z"
+  }
+},
+{
+  "model": "learn.dancepose",
+  "pk": 1,
+  "fields": {
+    "dance_name": "odissi",
+    "pose_name": "Baitha",
+    "image": "learn_dance/baitha.png",
+    "explanation": "",
+    "tutorial_link": "https://youtu.be/irdRlNzzWmY?si=NyHUpGaOEuwa-_jN",
+    "order": 0
+  }
+},
+{
+  "model": "learn.dancepose",
+  "pk": 2,
+  "fields": {
+    "dance_name": "odissi",
+    "pose_name": "Tribhangi",
+    "image": "learn_dance/trbhangi.png",
+    "explanation": "",
+    "tutorial_link": "https://www.youtube.com/shorts/ssWiNLvAuTI",
+    "order": 0
+  }
+},
+{
+  "model": "learn.dancepose",
+  "pk": 3,
+  "fields": {
+    "dance_name": "odissi",
+    "pose_name": "Sampada",
+    "image": "learn_dance/samapada.png",
+    "explanation": "",
+    "tutorial_link": "https://www.youtube.com/shorts/XVIM6eTZ-T4",
+    "order": 0
+  }
+},
+{
+  "model": "learn.dancepose",
+  "pk": 4,
+  "fields": {
+    "dance_name": "odissi",
+    "pose_name": "Chauka",
+    "image": "learn_dance/chauka.png",
+    "explanation": "",
+    "tutorial_link": "https://www.youtube.com/watch?v=-YTC-wuRQNc",
+    "order": 0
+  }
+},
+{
+  "model": "learn.dancepose",
+  "pk": 5,
+  "fields": {
+    "dance_name": "sambalpuri",
+    "pose_name": "Sambalpuri Dance",
+    "image": "learn_dance/sambalpuri_dsnce.jpg",
+    "explanation": "",
+    "tutorial_link": "https://www.youtube.com/watch?v=zVboeVb0iPM",
+    "order": 0
+  }
+},
+{
+  "model": "learn.dancepose",
+  "pk": 6,
+  "fields": {
+    "dance_name": "dhemsa",
+    "pose_name": "Dhemsa dance",
+    "image": "learn_dance/dhemsa.jpg",
+    "explanation": "",
+    "tutorial_link": "https://www.youtube.com/watch?v=lLasbvWY77E",
+    "order": 0
+  }
+},
+{
+  "model": "learn.languagephrase",
+  "pk": 1,
+  "fields": {
+    "category": "greetings",
+    "english_phrase": "Hello",
+    "odia_translation": "ନମସ୍କାର",
+    "audio": ""
+  }
+},
+{
+  "model": "learn.languagephrase",
+  "pk": 2,
+  "fields": {
+    "category": "greetings",
+    "english_phrase": "Thank you",
+    "odia_translation": "ଧନ୍ୟବାଦ",
+    "audio": ""
+  }
+},
+{
+  "model": "learn.languagephrase",
+  "pk": 3,
+  "fields": {
+    "category": "numbers",
+    "english_phrase": "One",
+    "odia_translation": "ଏକ",
+    "audio": ""
+  }
+},
+{
+  "model": "learn.languagephrase",
+  "pk": 4,
+  "fields": {
+    "category": "food",
+    "english_phrase": "Rice",
+    "odia_translation": "ଭାତ",
+    "audio": ""
+  }
+},
+{
+  "model": "learn.ritualpractice",
+  "pk": 1,
+  "fields": {
+    "title": "Nuakhai",
+    "region": "Sambalpur (Western Odisha)",
+    "description": "Nuakhai is an important agricultural festival celebrated in Western Odisha to welcome the new rice harvest.",
+    "cultural_significance": "The festival expresses gratitude for the new harvest and celebrates community, family, tradition, and prosperity.",
+    "practices": "People prepare the new rice, offer it to the deities, wear traditional clothes, visit relatives, exchange greetings, and celebrate together with traditional food and cultural activities.",
+    "image": "learn_rituals/nuakhai.jpg",
+    "created_at": "2026-08-21T13:02:03.547Z"
+  }
+},
+{
+  "model": "learn.ritualpractice",
+  "pk": 2,
+  "fields": {
+    "title": "Manabasa Gurubara Puja",
+    "region": "Odisha (all)",
+    "description": "Manabasa Gurubara is a traditional Odia puja dedicated to Goddess Lakshmi and is especially observed by women in Odisha during the month of Margashira.",
+    "cultural_significance": "The puja is associated with prosperity, cleanliness, devotion, family well-being, and the worship of Goddess Lakshmi.",
+    "practices": "Homes are cleaned and decorated with beautiful Jhoti and Chita designs, devotees prepare traditional offerings, and Goddess Lakshmi is worshipped with prayers and rituals on Thursdays.",
+    "image": "learn_rituals/Manabasagurubar.png",
+    "created_at": "2026-08-21T13:26:25.280Z"
+  }
+},
+{
+  "model": "learn.ritualpractice",
+  "pk": 3,
+  "fields": {
+    "title": "Rath Yatra",
+    "region": "Puri, Odisha",
+    "description": "Rath Yatra is a major annual festival in Odisha in which the deities of the Jagannath Temple are taken in grand chariots through the streets of Puri.",
+    "cultural_significance": "The festival represents devotion, community participation, and the tradition of Lord Jagannath and the sacred culture of Puri.",
+    "practices": "Devotees gather in large numbers, participate in the chariot procession, offer prayers, and celebrate with devotional songs and traditional activities.",
+    "image": "learn_rituals/rath_yatra.jpg",
+    "created_at": "2026-08-21T13:29:44.043Z"
+  }
+},
+{
+  "model": "learn.ritualpractice",
+  "pk": 4,
+  "fields": {
+    "title": "Raja Parba",
+    "region": "Odisha (all)",
+    "description": "Raja Parba is a traditional festival of Odisha that celebrates womanhood, fertility, and the arrival of the monsoon.",
+    "cultural_significance": "The festival honors Mother Earth and celebrates womanhood, fertility, nature, and the beginning of the rainy season.",
+    "practices": "People(especially girls) wear new clothes, enjoy traditional swings, prepare special foods such as Poda Pitha, visit family and friends, and take part in festive activities.",
+    "image": "learn_rituals/rajaparba.png",
+    "created_at": "2026-08-21T13:40:57.830Z"
+  }
+},
+{
+  "model": "threed.threedgeneration",
+  "pk": "149cd7ff-ef93-4302-8d5e-501ff961f94c",
+  "fields": {
+    "image": "threed/input_images/aluminiumpatachitrabalti_ZMDHZH9.webp",
+    "meshy_task_id": "01a02140-f9b2-7ef8-a965-6ab07c99356c",
+    "status": "processing",
+    "model_url": null,
+    "error_message": null,
+    "model_file": "",
+    "created_at": "2026-08-20T22:18:12.612Z",
+    "updated_at": "2026-08-20T22:18:13.998Z"
+  }
+},
+{
+  "model": "threed.threedgeneration",
+  "pk": "33fa3588-73b6-4381-8491-f8ece57055f4",
+  "fields": {
+    "image": "threed/input_images/aluminiumpatachitrabalti_SoETcUy.webp",
+    "meshy_task_id": "01a02141-4c0c-7f09-a449-48ac36722e58",
+    "status": "processing",
+    "model_url": null,
+    "error_message": null,
+    "model_file": "",
+    "created_at": "2026-08-20T22:18:33.741Z",
+    "updated_at": "2026-08-20T22:18:35.127Z"
+  }
+},
+{
+  "model": "threed.threedgeneration",
+  "pk": "41a2f3a1-8e66-4598-8069-8c59506e0894",
+  "fields": {
+    "image": "threed/input_images/aluminiumpatachitrabalti.webp",
+    "meshy_task_id": "01a02137-7af5-742f-94a3-60e7e3298649",
+    "status": "succeeded",
+    "model_url": "https://assets.meshy.ai/1faef2d5-42e9-4baa-9e97-17090dda048e/tasks/01a02137-7af5-742f-94a3-60e7e3298649/output/model.glb?Expires=1787523010&Signature=GOai6S8QkH4goQPs1n5yy~4LZ0H15VmlCKsq2~Bas7LpbhTyIfChl-fia6-u5rxjC5s7eOcACGsQJQwsAwDN7oEDSRQWJ7TxhNPSYnfGbCzAi-0ubXCTAceGpCpgEhP0iKaWsuafY6puD9qvL-vBSBgiBY45Iz0ERDCVqSSZpi96usjC296yZ-jB7MZ0YCPxJ2OMXrEKqqZvjz50nHyxi5oR-SnG7ymnmN70v8pzIebRhnz725m7mBpZ1y~8Dr8kIDl-X4yi3amMSnVglIdpwBkOyYwoSzc-0Pdm3GGxt2sYh9t~kKhfwx0uHFlmrMRXCcL~pNJYFxCQvSUVp-D2aA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "error_message": null,
+    "model_file": "3d/models/41a2f3a1-8e66-4598-8069-8c59506e0894.glb",
+    "created_at": "2026-08-20T22:07:50.127Z",
+    "updated_at": "2026-08-20T22:20:10.851Z"
+  }
+},
+{
+  "model": "threed.threedgeneration",
+  "pk": "501cf8bc-90a8-4b85-b676-ce96845bc07d",
+  "fields": {
+    "image": "threed/input_images/aluminiumpatachitrabalti_eA863OB.webp",
+    "meshy_task_id": null,
+    "status": "failed",
+    "model_url": null,
+    "error_message": "Meshy returned 429: {\"message\":\"NoMorePendingTasks: Upgrade your plan to queue up more tasks. You can manage your plan on https://www.meshy.ai/settings/subscription\"}",
+    "model_file": "",
+    "created_at": "2026-08-20T22:18:50.664Z",
+    "updated_at": "2026-08-20T22:18:51.909Z"
+  }
+},
+{
+  "model": "threed.threedgeneration",
+  "pk": "60769e77-f658-4703-aedc-e9d26e1a6d45",
+  "fields": {
+    "image": "threed/input_images/aluminiumpatachitrabalti_lrJ5SDB.webp",
+    "meshy_task_id": "01a02141-5641-7a3c-a470-6db850114e84",
+    "status": "processing",
+    "model_url": null,
+    "error_message": null,
+    "model_file": "",
+    "created_at": "2026-08-20T22:18:36.274Z",
+    "updated_at": "2026-08-20T22:18:37.742Z"
+  }
+},
+{
+  "model": "threed.threedgeneration",
+  "pk": "7523c048-f89d-45ff-890b-a5d733aa7872",
+  "fields": {
+    "image": "threed/input_images/aluminiumpatachitrabalti_EsshHA6.webp",
+    "meshy_task_id": "01a02141-737f-7a16-a814-f531f3a3900e",
+    "status": "processing",
+    "model_url": null,
+    "error_message": null,
+    "model_file": "",
+    "created_at": "2026-08-20T22:18:43.802Z",
+    "updated_at": "2026-08-20T22:18:45.194Z"
+  }
+},
+{
+  "model": "threed.threedgeneration",
+  "pk": "8c13f7c9-8d18-4f9a-821f-5b3a9b1916ff",
+  "fields": {
+    "image": "threed/input_images/aluminiumpatachitrabalti_rA6rW9q.webp",
+    "meshy_task_id": null,
+    "status": "failed",
+    "model_url": null,
+    "error_message": "Meshy returned 429: {\"message\":\"NoMorePendingTasks: Upgrade your plan to queue up more tasks. You can manage your plan on https://www.meshy.ai/settings/subscription\"}",
+    "model_file": "",
+    "created_at": "2026-08-20T22:18:46.283Z",
+    "updated_at": "2026-08-20T22:18:47.600Z"
+  }
+},
+{
+  "model": "threed.threedgeneration",
+  "pk": "9ae4be3c-4166-4cd3-80b8-5a992e088d23",
+  "fields": {
+    "image": "threed/input_images/aluminiumpatachitrabalti_xl0Z1pO.webp",
+    "meshy_task_id": "01a02140-eb15-79fd-9d90-f4ab79ce0b82",
+    "status": "processing",
+    "model_url": null,
+    "error_message": null,
+    "model_file": "",
+    "created_at": "2026-08-20T22:18:08.900Z",
+    "updated_at": "2026-08-20T22:18:10.257Z"
+  }
+},
+{
+  "model": "threed.threedgeneration",
+  "pk": "aaa8c3a7-b35e-4f7a-8d6c-bf2f75abb0c5",
+  "fields": {
+    "image": "threed/input_images/aluminiumpatachitrabalti_bCcT5Ix.webp",
+    "meshy_task_id": "01a02141-315c-7a0a-a21f-be0e40968c84",
+    "status": "processing",
+    "model_url": null,
+    "error_message": null,
+    "model_file": "",
+    "created_at": "2026-08-20T22:18:26.864Z",
+    "updated_at": "2026-08-20T22:18:28.243Z"
+  }
+},
+{
+  "model": "threed.threedgeneration",
+  "pk": "d10a8847-efaa-4bc8-a1ef-6877a12a217f",
+  "fields": {
+    "image": "threed/input_images/images_22.jpg",
+    "meshy_task_id": "01a0289e-f66e-71d1-a77a-90a26180b19b",
+    "status": "succeeded",
+    "model_url": "https://assets.meshy.ai/1faef2d5-42e9-4baa-9e97-17090dda048e/tasks/01a0289e-f66e-71d1-a77a-90a26180b19b/output/model.glb?Expires=1787647409&Signature=iW-OF4WIpWMMEgJJbs9pfb-VN0b-273vzXda65Ku1CHGySxhvskQtmFEqjsJJKq0wQd2oVEYyexq4doTjKoL3tFmqj38Br1vI9ngg8z2pZsnIDR57WCqkBJMwFQkr0WefHAiCNQtI8KGUo0tOBJ744SzTqAYP7sXORHncORR2dxZRKJ3vS6bqLwbBD5lfhzjs1KQnaG9x5Ma1eMi4NfZP~Wdo7R9o3VQTzM9nI4Fd4bYBU0vuF97ock74TpNWdohhKfdwDcCKuXvwaoj8emnfbluy-i0LEs3MqgWcyj~MacNmwKWnphhd4g4bqxWhiEScS1Ldih2bu2JeHt3dhM2Fw__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "error_message": null,
+    "model_file": "3d/models/d10a8847-efaa-4bc8-a1ef-6877a12a217f.glb",
+    "created_at": "2026-08-22T08:38:17.258Z",
+    "updated_at": "2026-08-22T08:46:51.909Z"
+  }
+},
+{
+  "model": "threed.threedgeneration",
+  "pk": "d530ffe7-19b2-4d1f-b915-d71f060672a2",
+  "fields": {
+    "image": "threed/input_images/aluminiumpatachitrabalti_r4FyZJf.webp",
+    "meshy_task_id": "01a02140-7bb6-79e4-bb48-d17d706f872d",
+    "status": "processing",
+    "model_url": null,
+    "error_message": null,
+    "model_file": "",
+    "created_at": "2026-08-20T22:17:40.026Z",
+    "updated_at": "2026-08-20T22:17:41.558Z"
+  }
+},
+{
+  "model": "threed.threedgeneration",
+  "pk": "e4e4b987-6589-4bff-80e4-2d7953fccddd",
+  "fields": {
+    "image": "threed/input_images/aluminiumpatachitrabalti_afeXQzf.webp",
+    "meshy_task_id": "01a02141-3db4-7a2c-8b88-a356c552c60c",
+    "status": "processing",
+    "model_url": null,
+    "error_message": null,
+    "model_file": "",
+    "created_at": "2026-08-20T22:18:29.813Z",
+    "updated_at": "2026-08-20T22:18:31.249Z"
+  }
+},
+{
+  "model": "threed.threedgeneration",
+  "pk": "f38e1cec-de5b-4b27-b2c5-19a595604c48",
+  "fields": {
+    "image": "threed/input_images/aluminiumpatachitrabalti_1dmR6Xd.webp",
+    "meshy_task_id": "01a02141-69ac-7682-9711-431e913392e8",
+    "status": "processing",
+    "model_url": null,
+    "error_message": null,
+    "model_file": "",
+    "created_at": "2026-08-20T22:18:41.304Z",
+    "updated_at": "2026-08-20T22:18:42.687Z"
+  }
+},
+{
+  "model": "threed.threedgeneration",
+  "pk": "fd1e8258-7496-4e90-ab1f-1c34484de9c8",
+  "fields": {
+    "image": "threed/input_images/aluminiumpatachitrabalti_jhA6PbW.webp",
+    "meshy_task_id": "01a02141-60e4-7f0d-a4ff-513bda965576",
+    "status": "processing",
+    "model_url": null,
+    "error_message": null,
+    "model_file": "",
+    "created_at": "2026-08-20T22:18:38.806Z",
+    "updated_at": "2026-08-20T22:18:40.224Z"
+  }
+},
+{
+  "model": "canvas.canvasartwork",
+  "pk": "2ec91a64-0087-42ca-89ed-7d8619d0285f",
+  "fields": {
+    "title": "do",
+    "template_image": "canvas/templates/heritage-template.png",
+    "artwork_image": "canvas/artworks/heritage-artwork.png",
+    "created_at": "2026-08-23T12:21:10.176Z",
+    "updated_at": "2026-08-23T12:21:10.181Z"
+  }
+},
+{
+  "model": "canvas.canvasartwork",
+  "pk": "acbd300c-bde7-439f-b238-8e66d1953cde",
+  "fields": {
+    "title": "My Pattachitra Artwork",
+    "template_image": "canvas/templates/p1.jpg",
+    "artwork_image": "canvas/artworks/p1.jpg",
+    "created_at": "2026-08-21T09:04:28.441Z",
+    "updated_at": "2026-08-21T09:04:28.441Z"
+  }
+},
+{
+  "model": "canvas.canvasartwork",
+  "pk": "af2bd616-f136-4108-90a3-b577ac61f80a",
+  "fields": {
+    "title": "goo",
+    "template_image": "canvas/templates/images_22.jpg",
+    "artwork_image": "canvas/artworks/images_22.jpg",
+    "created_at": "2026-08-22T08:59:26.266Z",
+    "updated_at": "2026-08-22T08:59:26.266Z"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-08-19T07:59:46.443Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "heritage",
+      "category"
+    ],
+    "object_id": "1",
+    "object_repr": "Craft",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-08-19T08:00:00.446Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "heritage",
+      "language"
+    ],
+    "object_id": "1",
+    "object_repr": "Odia",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-08-19T08:00:31.485Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "heritage",
+      "location"
+    ],
+    "object_id": "1",
+    "object_repr": "Pipili, Puri",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-08-19T22:19:26.224Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "productcategory"
+    ],
+    "object_id": "1",
+    "object_repr": "Handicrafts",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-08-19T22:19:48.126Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "productcategory"
+    ],
+    "object_id": "2",
+    "object_repr": "Tribal Art",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-08-19T22:20:06.417Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "productcategory"
+    ],
+    "object_id": "3",
+    "object_repr": "Jewellery",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-08-19T22:22:27.931Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "a976769f-9c29-49d0-a84d-84abbe214037",
+    "object_repr": "Jewellery",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-08-19T22:22:35.725Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "a976769f-9c29-49d0-a84d-84abbe214037",
+    "object_repr": "Jewellery",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-08-19T22:24:24.596Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "de85a5b4-2fa9-46a7-aad9-9fde561e53c2",
+    "object_repr": "Pattachitra",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-08-19T23:59:44.151Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "1",
+    "object_repr": "Rangabati",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-08-20T00:08:16.278Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "2",
+    "object_repr": "Tui Mor Rani Re",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-08-20T00:17:58.113Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "dancepose"
+    ],
+    "object_id": "1",
+    "object_repr": "Odissi - Chauka",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-08-20T00:19:10.677Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "dancepose"
+    ],
+    "object_id": "2",
+    "object_repr": "Odissi - Tribhangi",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-08-20T00:20:53.415Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "dancepose"
+    ],
+    "object_id": "3",
+    "object_repr": "Sambalpuri - Sambalpuri Dance",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-08-20T00:27:43.419Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "languagephrase"
+    ],
+    "object_id": "1",
+    "object_repr": "Hello → ନମସ୍କାର",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-08-20T00:28:21.916Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "languagephrase"
+    ],
+    "object_id": "2",
+    "object_repr": "Thank you → ଧନ୍ୟବାଦ",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-08-20T00:28:46.887Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "languagephrase"
+    ],
+    "object_id": "3",
+    "object_repr": "One → ଧନ୍ୟବାଦ",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-08-20T00:29:00.616Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "languagephrase"
+    ],
+    "object_id": "3",
+    "object_repr": "One → ଏକ",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Odia translation\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-08-20T00:29:43.939Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "languagephrase"
+    ],
+    "object_id": "4",
+    "object_repr": "Rice → ଭାତ",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-08-20T07:51:36.614Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "2",
+    "object_repr": "Rani Guri Sambalpuri",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Genre\", \"Artist\", \"Region\", \"Image\", \"Youtube url\", \"Lyrics\", \"Cultural context\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2026-08-20T07:51:46.510Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "2",
+    "object_repr": "Rani Guri",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Title\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2026-08-20T07:52:16.816Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "1",
+    "object_repr": "Rangabati",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Genre\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2026-08-20T07:52:44.346Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "2",
+    "object_repr": "Rani Guri",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Audio\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2026-08-20T07:54:38.646Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "1",
+    "object_repr": "Alta makhi",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Artist\", \"Image\", \"Audio\", \"Lyrics\", \"Cultural context\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2026-08-20T07:59:19.710Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "3",
+    "object_repr": "Rim jhim pani",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2026-08-20T08:02:50.322Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "4",
+    "object_repr": "Keshari loo..",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2026-08-20T08:15:36.793Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "dancepose"
+    ],
+    "object_id": "4",
+    "object_repr": "odissi - Chauka",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2026-08-20T08:16:53.436Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "dancepose"
+    ],
+    "object_id": "4",
+    "object_repr": "odissi - Chauka",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2026-08-20T08:19:59.115Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "dancepose"
+    ],
+    "object_id": "1",
+    "object_repr": "odissi - Baitha",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Dance name\", \"Pose name\", \"Image\", \"Explanation\", \"Tutorial link\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2026-08-20T08:21:17.825Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "dancepose"
+    ],
+    "object_id": "2",
+    "object_repr": "odissi - Tribhangi",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Dance name\", \"Image\", \"Explanation\", \"Tutorial link\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2026-08-20T08:28:01.427Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "dancepose"
+    ],
+    "object_id": "3",
+    "object_repr": "odissi - Sampada",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Dance name\", \"Pose name\", \"Image\", \"Explanation\", \"Tutorial link\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2026-08-20T08:36:29.843Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "5",
+    "object_repr": "Mo jaga Kalia Re",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2026-08-20T08:39:28.017Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "6",
+    "object_repr": "Mate Kari de re Nandalala bhabapurna jagannatha",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2026-08-20T08:42:24.033Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "7",
+    "object_repr": "Jaga to Kala ranga",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2026-08-20T08:46:01.312Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "8",
+    "object_repr": "Tora Daya hele chora malaya bahe",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2026-08-20T08:52:16.967Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "dancepose"
+    ],
+    "object_id": "5",
+    "object_repr": "odissi - Sambalpuri Dance",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2026-08-20T08:52:27.042Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "dancepose"
+    ],
+    "object_id": "5",
+    "object_repr": "sambalpuri - Sambalpuri Dance",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Dance name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2026-08-20T08:54:53.081Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "dancepose"
+    ],
+    "object_id": "6",
+    "object_repr": "dhemsa - Dhemsa dance",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2026-08-20T08:59:10.664Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "9",
+    "object_repr": "Lusadini Lagne Enej",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2026-08-20T09:03:12.341Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "10",
+    "object_repr": "Hisid Halay Hoy",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2026-08-20T09:05:04.286Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "11",
+    "object_repr": "Lagne Serenj",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2026-08-20T09:06:25.692Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "11",
+    "object_repr": "Lagne Serenj",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Artist\", \"Image\", \"Audio\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2026-08-20T09:09:53.362Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "12",
+    "object_repr": "Pan baha",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2026-08-20T09:18:10.028Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "13",
+    "object_repr": "Tui Mor Rani Re",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2026-08-20T09:20:05.793Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "14",
+    "object_repr": "Rinjodi",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 46,
+  "fields": {
+    "action_time": "2026-08-20T09:22:55.246Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "15",
+    "object_repr": "Chi chi re Nani",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 47,
+  "fields": {
+    "action_time": "2026-08-20T09:27:21.907Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "16",
+    "object_repr": "Mahuriya Dada Re",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 48,
+  "fields": {
+    "action_time": "2026-08-20T14:36:49.149Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "de85a5b4-2fa9-46a7-aad9-9fde561e53c2",
+    "object_repr": "Dhokra (Odisha Tribal Bracelet)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Description\", \"Price\", \"Category\", \"Image\", \"Buy url\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 49,
+  "fields": {
+    "action_time": "2026-08-20T14:39:12.886Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "a976769f-9c29-49d0-a84d-84abbe214037",
+    "object_repr": "Dhokra Chocker (Necklace with earrings)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Description\", \"Price\", \"Image\", \"Buy url\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 50,
+  "fields": {
+    "action_time": "2026-08-20T14:41:15.053Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "e506b3cc-fc76-4c99-bb85-a880fd2b6bc7",
+    "object_repr": "Dhokra Dance Necklace",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 51,
+  "fields": {
+    "action_time": "2026-08-20T14:43:43.212Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "28df0011-2ee2-4a49-8680-2b2a2f1c69d4",
+    "object_repr": "Handmade Dokra Earrings with Ashoke Assemble",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 52,
+  "fields": {
+    "action_time": "2026-08-20T14:46:15.011Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "3bcb98d0-7f39-4228-adaf-9acf6d60b78f",
+    "object_repr": "Tribal HandCrafted Balti",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 53,
+  "fields": {
+    "action_time": "2026-08-20T14:46:43.141Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "28df0011-2ee2-4a49-8680-2b2a2f1c69d4",
+    "object_repr": "Handmade Dokra Earrings with Ashoke Assemble",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 54,
+  "fields": {
+    "action_time": "2026-08-20T14:46:58.390Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "28df0011-2ee2-4a49-8680-2b2a2f1c69d4",
+    "object_repr": "Handmade Dokra Earrings with Ashoke Assemble",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 55,
+  "fields": {
+    "action_time": "2026-08-20T14:47:09.639Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "3bcb98d0-7f39-4228-adaf-9acf6d60b78f",
+    "object_repr": "Tribal HandCrafted Balti",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 56,
+  "fields": {
+    "action_time": "2026-08-20T14:48:20.609Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "7db076fe-3df8-4af5-aef5-58e9d75962cc",
+    "object_repr": "Patachitra Painting",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 57,
+  "fields": {
+    "action_time": "2026-08-20T14:50:19.111Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "460a6d6a-d3e2-478c-adba-f06ebb75de11",
+    "object_repr": "Tribal Coconut Hanging",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 58,
+  "fields": {
+    "action_time": "2026-08-20T14:53:00.448Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "052106be-182e-4af6-a673-c596e6411aa5",
+    "object_repr": "Wooden Art Tribal",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 59,
+  "fields": {
+    "action_time": "2026-08-20T14:54:47.485Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "19bebd10-dd2f-4f65-9428-365980e9c830",
+    "object_repr": "Tribal Folk Mask",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 60,
+  "fields": {
+    "action_time": "2026-08-20T14:57:53.066Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "e506b3cc-fc76-4c99-bb85-a880fd2b6bc7",
+    "object_repr": "Dhokra Dance Necklace",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Price\", \"Display order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 61,
+  "fields": {
+    "action_time": "2026-08-20T14:58:02.532Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "19bebd10-dd2f-4f65-9428-365980e9c830",
+    "object_repr": "Tribal Folk Mask",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Display order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 62,
+  "fields": {
+    "action_time": "2026-08-20T14:58:10.592Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "052106be-182e-4af6-a673-c596e6411aa5",
+    "object_repr": "Wooden Art Tribal",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Display order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 63,
+  "fields": {
+    "action_time": "2026-08-20T14:58:20.336Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "de85a5b4-2fa9-46a7-aad9-9fde561e53c2",
+    "object_repr": "Dhokra (Odisha Tribal Bracelet)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Display order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 64,
+  "fields": {
+    "action_time": "2026-08-20T14:58:26.562Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "7db076fe-3df8-4af5-aef5-58e9d75962cc",
+    "object_repr": "Patachitra Painting",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Display order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 65,
+  "fields": {
+    "action_time": "2026-08-20T14:58:32.851Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "a976769f-9c29-49d0-a84d-84abbe214037",
+    "object_repr": "Dhokra Chocker (Necklace with earrings)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Display order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 66,
+  "fields": {
+    "action_time": "2026-08-20T14:58:38.088Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "460a6d6a-d3e2-478c-adba-f06ebb75de11",
+    "object_repr": "Tribal Coconut Hanging",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Display order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 67,
+  "fields": {
+    "action_time": "2026-08-20T14:58:44.786Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "3bcb98d0-7f39-4228-adaf-9acf6d60b78f",
+    "object_repr": "Tribal HandCrafted Balti",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Display order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 68,
+  "fields": {
+    "action_time": "2026-08-20T14:58:51.264Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "28df0011-2ee2-4a49-8680-2b2a2f1c69d4",
+    "object_repr": "Handmade Dokra Earrings with Ashoke Assemble",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Display order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 69,
+  "fields": {
+    "action_time": "2026-08-20T15:01:39.363Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "shopping",
+      "product"
+    ],
+    "object_id": "e506b3cc-fc76-4c99-bb85-a880fd2b6bc7",
+    "object_repr": "Dhokra Dance Necklace",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 70,
+  "fields": {
+    "action_time": "2026-08-20T20:37:20.713Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreplace"
+    ],
+    "object_id": "c9f71dbc-2da9-4842-b5e0-161709a7465d",
+    "object_repr": "Konark Sun Temple",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 71,
+  "fields": {
+    "action_time": "2026-08-20T20:39:03.325Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreera"
+    ],
+    "object_id": "1",
+    "object_repr": "Konark Sun Temple - 13th Century – Original Era",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 72,
+  "fields": {
+    "action_time": "2026-08-20T20:40:41.102Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreera"
+    ],
+    "object_id": "2",
+    "object_repr": "Konark Sun Temple - Present Day – Preserved Heritage",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 73,
+  "fields": {
+    "action_time": "2026-08-20T20:49:15.380Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreplace"
+    ],
+    "object_id": "c9f71dbc-2da9-4842-b5e0-161709a7465d",
+    "object_repr": "Konark Sun Temple",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Main image\", \"Culture title\", \"Culture description\", \"Culture image\", \"Food title\", \"Food description\", \"Food image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 74,
+  "fields": {
+    "action_time": "2026-08-20T20:51:33.874Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreplace"
+    ],
+    "object_id": "c9f71dbc-2da9-4842-b5e0-161709a7465d",
+    "object_repr": "Konark Sun Temple",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Food description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 75,
+  "fields": {
+    "action_time": "2026-08-20T20:53:26.578Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreera"
+    ],
+    "object_id": "1",
+    "object_repr": "Konark Sun Temple - 13th Century – Original Era",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 76,
+  "fields": {
+    "action_time": "2026-08-20T20:54:47.096Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreera"
+    ],
+    "object_id": "2",
+    "object_repr": "Konark Sun Temple - Present Day – Preserved Heritage",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 77,
+  "fields": {
+    "action_time": "2026-08-20T20:58:33.027Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreplace"
+    ],
+    "object_id": "e9215066-9271-464b-97d0-ec16f0c1f306",
+    "object_repr": "Raghurajpur Heritage Village",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 78,
+  "fields": {
+    "action_time": "2026-08-20T21:04:27.439Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreplace"
+    ],
+    "object_id": "e9215066-9271-464b-97d0-ec16f0c1f306",
+    "object_repr": "Raghurajpur Heritage Village",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Main image\", \"Culture title\", \"Culture description\", \"Culture image\", \"Food title\", \"Food description\", \"Food image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 79,
+  "fields": {
+    "action_time": "2026-08-20T21:05:45.025Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreera"
+    ],
+    "object_id": "3",
+    "object_repr": "Raghurajpur Heritage Village - Traditional Heritage Era",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 80,
+  "fields": {
+    "action_time": "2026-08-20T21:07:00.967Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreera"
+    ],
+    "object_id": "3",
+    "object_repr": "Raghurajpur Heritage Village - Traditional Heritage Era",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 81,
+  "fields": {
+    "action_time": "2026-08-20T21:08:35.466Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreera"
+    ],
+    "object_id": "4",
+    "object_repr": "Raghurajpur Heritage Village - Present Day – Living Heritage Village",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 82,
+  "fields": {
+    "action_time": "2026-08-20T21:12:23.790Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreera"
+    ],
+    "object_id": "3",
+    "object_repr": "Raghurajpur Heritage Village - Traditional Heritage Era",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 83,
+  "fields": {
+    "action_time": "2026-08-20T21:14:28.949Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreplace"
+    ],
+    "object_id": "2cfa4658-94cd-42ab-98f5-66ec606cc81f",
+    "object_repr": "Udayagiri–Khandagiri Caves",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 84,
+  "fields": {
+    "action_time": "2026-08-20T21:20:56.543Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreplace"
+    ],
+    "object_id": "2cfa4658-94cd-42ab-98f5-66ec606cc81f",
+    "object_repr": "Udayagiri–Khandagiri Caves",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Main image\", \"Culture title\", \"Culture description\", \"Culture image\", \"Food title\", \"Food description\", \"Food image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 85,
+  "fields": {
+    "action_time": "2026-08-20T21:23:18.342Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreera"
+    ],
+    "object_id": "5",
+    "object_repr": "Udayagiri–Khandagiri Caves - Ancient Kalinga Era",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 86,
+  "fields": {
+    "action_time": "2026-08-20T21:24:15.561Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreera"
+    ],
+    "object_id": "6",
+    "object_repr": "Udayagiri–Khandagiri Caves - Present Day – Preserved Ancient Heritage",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 87,
+  "fields": {
+    "action_time": "2026-08-20T21:25:13.613Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreera"
+    ],
+    "object_id": "6",
+    "object_repr": "Udayagiri–Khandagiri Caves - Present Day – Preserved Ancient Heritage",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 88,
+  "fields": {
+    "action_time": "2026-08-20T21:32:27.591Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreplace"
+    ],
+    "object_id": "7b0ed9b0-0c1b-4f43-a6c2-e39b6ce25897",
+    "object_repr": "Shree Jagannath Temple, Puri",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 89,
+  "fields": {
+    "action_time": "2026-08-20T21:36:12.764Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreera"
+    ],
+    "object_id": "7",
+    "object_repr": "Shree Jagannath Temple, Puri - Historic Ganga Dynasty Era",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 90,
+  "fields": {
+    "action_time": "2026-08-20T21:37:08.544Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreera"
+    ],
+    "object_id": "8",
+    "object_repr": "Shree Jagannath Temple, Puri - Present Day – Living Jagannath Heritage",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 91,
+  "fields": {
+    "action_time": "2026-08-20T21:39:08.883Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreplace"
+    ],
+    "object_id": "c9f71dbc-2da9-4842-b5e0-161709a7465d",
+    "object_repr": "Konark Sun Temple",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Display order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 92,
+  "fields": {
+    "action_time": "2026-08-20T21:39:18.324Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreplace"
+    ],
+    "object_id": "7b0ed9b0-0c1b-4f43-a6c2-e39b6ce25897",
+    "object_repr": "Shree Jagannath Temple, Puri",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Display order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 93,
+  "fields": {
+    "action_time": "2026-08-20T21:39:37.997Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreplace"
+    ],
+    "object_id": "e9215066-9271-464b-97d0-ec16f0c1f306",
+    "object_repr": "Raghurajpur Heritage Village",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Display order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 94,
+  "fields": {
+    "action_time": "2026-08-20T21:39:52.762Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreplace"
+    ],
+    "object_id": "2cfa4658-94cd-42ab-98f5-66ec606cc81f",
+    "object_repr": "Udayagiri–Khandagiri Caves",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Display order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 95,
+  "fields": {
+    "action_time": "2026-08-20T21:39:59.086Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "explore",
+      "exploreplace"
+    ],
+    "object_id": "c9f71dbc-2da9-4842-b5e0-161709a7465d",
+    "object_repr": "Konark Sun Temple",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Display order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 96,
+  "fields": {
+    "action_time": "2026-08-21T13:02:03.563Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "ritualpractice"
+    ],
+    "object_id": "1",
+    "object_repr": "Nuakhai",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 97,
+  "fields": {
+    "action_time": "2026-08-21T13:26:25.280Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "ritualpractice"
+    ],
+    "object_id": "2",
+    "object_repr": "Manabasa Gurubara Puja",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 98,
+  "fields": {
+    "action_time": "2026-08-21T13:29:44.043Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "ritualpractice"
+    ],
+    "object_id": "3",
+    "object_repr": "Rath Yatra",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 99,
+  "fields": {
+    "action_time": "2026-08-21T13:34:16.701Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "ritualpractice"
+    ],
+    "object_id": "3",
+    "object_repr": "Rath Yatra",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 100,
+  "fields": {
+    "action_time": "2026-08-21T13:40:57.830Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "ritualpractice"
+    ],
+    "object_id": "4",
+    "object_repr": "Raja Parba",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 101,
+  "fields": {
+    "action_time": "2026-08-21T13:54:53.015Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "2",
+    "object_repr": "Rani Guri",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Audio\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 102,
+  "fields": {
+    "action_time": "2026-08-21T13:56:23.098Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "1",
+    "object_repr": "Alta makhi",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Audio\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 103,
+  "fields": {
+    "action_time": "2026-08-21T13:58:02.671Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "3",
+    "object_repr": "Rim jhim pani",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Audio\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 104,
+  "fields": {
+    "action_time": "2026-08-21T13:58:40.319Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "4",
+    "object_repr": "Keshari loo..",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Audio\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 105,
+  "fields": {
+    "action_time": "2026-08-21T14:00:19.182Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "5",
+    "object_repr": "Mo jaga Kalia Re",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\", \"Audio\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 106,
+  "fields": {
+    "action_time": "2026-08-21T14:01:49.698Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "6",
+    "object_repr": "Mate Kari de re Nandalala bhabapurna jagannatha",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Audio\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 107,
+  "fields": {
+    "action_time": "2026-08-21T14:02:45.507Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "7",
+    "object_repr": "Jaga to Kala ranga",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Audio\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 108,
+  "fields": {
+    "action_time": "2026-08-21T14:03:36.209Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "8",
+    "object_repr": "Tora Daya hele chora malaya bahe",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Audio\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 109,
+  "fields": {
+    "action_time": "2026-08-21T14:05:39.161Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "9",
+    "object_repr": "Lusadini Lagne Enej",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Audio\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 110,
+  "fields": {
+    "action_time": "2026-08-21T14:07:41.330Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "10",
+    "object_repr": "Hisid Halay Hoy",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Audio\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 111,
+  "fields": {
+    "action_time": "2026-08-21T14:08:32.936Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "11",
+    "object_repr": "Lagne Serenj",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Audio\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 112,
+  "fields": {
+    "action_time": "2026-08-21T14:09:51.291Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "12",
+    "object_repr": "Pan baha",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Audio\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 113,
+  "fields": {
+    "action_time": "2026-08-21T14:09:58.948Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "13",
+    "object_repr": "Tui Mor Rani Re",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 114,
+  "fields": {
+    "action_time": "2026-08-21T14:10:07.703Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "14",
+    "object_repr": "Rinjodi",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 115,
+  "fields": {
+    "action_time": "2026-08-21T14:11:13.390Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "15",
+    "object_repr": "Chi chi re Nani",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Audio\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 116,
+  "fields": {
+    "action_time": "2026-08-21T14:11:21.450Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "16",
+    "object_repr": "Mahuriya Dada Re",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 117,
+  "fields": {
+    "action_time": "2026-08-21T14:13:36.547Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "16",
+    "object_repr": "Mahuriya Dada Re",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Audio\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 118,
+  "fields": {
+    "action_time": "2026-08-21T14:15:09.911Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "3",
+    "object_repr": "Rim jhim pani",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 119,
+  "fields": {
+    "action_time": "2026-08-21T14:17:52.590Z",
+    "user": [
+      "Rakshi"
+    ],
+    "content_type": [
+      "learn",
+      "song"
+    ],
+    "object_id": "16",
+    "object_repr": "Mahuriya Dada Re",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+}
+]
