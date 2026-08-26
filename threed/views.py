@@ -1,9 +1,3 @@
-# ============================================================
-# threed/views.py
-# ============================================================
-
-from django.core.files.base import ContentFile
-
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -12,7 +6,6 @@ from .models import ThreeDGeneration
 from .services import (
     create_meshy_task,
     get_meshy_task,
-    download_glb,
 )
 
 
@@ -23,14 +16,9 @@ from .services import (
 @api_view(["POST"])
 def generate_3d_from_image(request):
 
-    # --------------------------------------------------------
-    # Get uploaded image
-    # --------------------------------------------------------
-
     image = request.FILES.get("image")
 
     if not image:
-
         return Response(
             {
                 "status": "error",
@@ -57,7 +45,7 @@ def generate_3d_from_image(request):
     )
 
     # --------------------------------------------------------
-    # Meshy task creation failed
+    # Meshy request failed
     # --------------------------------------------------------
 
     if result.get("error"):
@@ -81,51 +69,24 @@ def generate_3d_from_image(request):
         )
 
     # --------------------------------------------------------
-    # Get Meshy task ID
+    # Meshy task created successfully
     # --------------------------------------------------------
 
-    task_id = result.get("task_id")
+    generation.meshy_task_id = result.get(
+        "task_id"
+    )
 
-    if not task_id:
-
-        generation.status = "failed"
-
-        generation.error_message = (
-            "Meshy did not return a task ID."
-        )
-
-        generation.save()
-
-        return Response(
-            {
-                "status": "error",
-                "generation_id": generation.id,
-                "detail": generation.error_message,
-            },
-            status=status.HTTP_502_BAD_GATEWAY,
-        )
-
-    # --------------------------------------------------------
-    # Save Meshy task
-    # --------------------------------------------------------
-
-    generation.meshy_task_id = task_id
     generation.status = "processing"
 
-    generation.save()
+    generation.error_message = None
 
-    # --------------------------------------------------------
-    # Return processing response
-    # --------------------------------------------------------
+    generation.save()
 
     return Response(
         {
             "status": "processing",
             "generation_id": generation.id,
             "meshy_task_id": generation.meshy_task_id,
-            "progress": 0,
-            "model_url": None,
-            "error_message": None,
         },
         status=status.HTTP_202_ACCEPTED,
     )
@@ -136,7 +97,10 @@ def generate_3d_from_image(request):
 # ============================================================
 
 @api_view(["GET"])
-def check_3d_status(request, generation_id):
+def check_3d_status(
+    request,
+    generation_id,
+):
 
     # --------------------------------------------------------
     # Find generation
@@ -159,17 +123,26 @@ def check_3d_status(request, generation_id):
         )
 
     # ========================================================
-    # ALREADY SUCCESSFULLY STORED
+    # ALREADY COMPLETED
     # ========================================================
 
-    if (
-        generation.status == "succeeded"
-        and generation.model_file
-    ):
+    if generation.status == "succeeded":
 
-        permanent_url = request.build_absolute_uri(
-            generation.model_file.url
-        )
+        model_url = None
+
+        # Prefer Meshy URL
+        if generation.model_url:
+            model_url = generation.model_url
+
+        # Fallback to stored file
+        elif generation.model_file:
+
+            try:
+                model_url = request.build_absolute_uri(
+                    generation.model_file.url
+                )
+            except Exception:
+                model_url = None
 
         return Response(
             {
@@ -177,13 +150,13 @@ def check_3d_status(request, generation_id):
                 "generation_id": generation.id,
                 "meshy_task_id": generation.meshy_task_id,
                 "progress": 100,
-                "model_url": permanent_url,
+                "model_url": model_url,
                 "error_message": None,
             }
         )
 
     # ========================================================
-    # MESHY TASK DOES NOT EXIST
+    # NO MESHY TASK
     # ========================================================
 
     if not generation.meshy_task_id:
@@ -202,7 +175,7 @@ def check_3d_status(request, generation_id):
         )
 
     # ========================================================
-    # ASK MESHY FOR STATUS
+    # CHECK MESHY
     # ========================================================
 
     result = get_meshy_task(
@@ -210,7 +183,7 @@ def check_3d_status(request, generation_id):
     )
 
     # --------------------------------------------------------
-    # Meshy request failed
+    # Meshy API error
     # --------------------------------------------------------
 
     if result.get("error"):
@@ -230,17 +203,15 @@ def check_3d_status(request, generation_id):
             status=status.HTTP_502_BAD_GATEWAY,
         )
 
-    # --------------------------------------------------------
-    # Get Meshy response data
-    # --------------------------------------------------------
-
     data = result.get("data") or {}
 
-    meshy_status = data.get("status")
+    meshy_status = data.get(
+        "status"
+    )
 
     progress = data.get(
         "progress",
-        0
+        0,
     )
 
     # ========================================================
@@ -248,10 +219,6 @@ def check_3d_status(request, generation_id):
     # ========================================================
 
     if meshy_status == "SUCCEEDED":
-
-        # ----------------------------------------------------
-        # Get model URLs
-        # ----------------------------------------------------
 
         model_urls = data.get(
             "model_urls"
@@ -262,7 +229,7 @@ def check_3d_status(request, generation_id):
         )
 
         # ----------------------------------------------------
-        # Meshy succeeded but no GLB
+        # No GLB URL returned
         # ----------------------------------------------------
 
         if not glb_url:
@@ -289,222 +256,39 @@ def check_3d_status(request, generation_id):
                 }
             )
 
-        # ----------------------------------------------------
-        # Save original Meshy URL
-        # ----------------------------------------------------
+        # ====================================================
+        # IMPORTANT
+        #
+        # DO NOT DOWNLOAD THE GLB.
+        #
+        # Your previous code downloaded the GLB and tried
+        # to save it to Cloudinary. Your GLB was ~77 MB,
+        # while Cloudinary rejected files above 10 MB.
+        #
+        # We therefore keep Meshy's GLB URL directly.
+        # ====================================================
 
         generation.model_url = glb_url
 
-        # ====================================================
-        # DOWNLOAD GLB ONLY ONCE
-        # ====================================================
+        generation.status = "succeeded"
 
-        if not generation.model_file:
+        generation.error_message = None
 
-            download_result = download_glb(
-                glb_url
-            )
-
-            # ------------------------------------------------
-            # Download failed / file too large
-            # ------------------------------------------------
-
-            if download_result.get("error"):
-
-                generation.status = "failed"
-
-                generation.error_message = (
-                    download_result.get("detail")
-                    or "Could not download GLB model."
-                )
-
-                generation.save()
-
-                return Response(
-                    {
-                        "status": "failed",
-                        "generation_id": generation.id,
-                        "meshy_task_id": (
-                            generation.meshy_task_id
-                        ),
-                        "progress": 100,
-                        "model_url": None,
-                        "error_message": (
-                            generation.error_message
-                        ),
-                    }
-                )
-
-            # ------------------------------------------------
-            # Get downloaded content
-            # ------------------------------------------------
-
-            glb_content = download_result.get(
-                "content"
-            )
-
-            glb_size = download_result.get(
-                "size",
-                len(glb_content or b"")
-            )
-
-            # ------------------------------------------------
-            # Extra safety check
-            #
-            # 10 MB = 10 * 1024 * 1024
-            # ------------------------------------------------
-
-            MAX_MODEL_SIZE = (
-                10 * 1024 * 1024
-            )
-
-            if glb_size > MAX_MODEL_SIZE:
-
-                generation.status = "failed"
-
-                generation.error_message = (
-                    "3D model was generated, "
-                    "but the GLB file is too large. "
-                    f"Got "
-                    f"{glb_size} bytes. "
-                    f"Maximum is "
-                    f"{MAX_MODEL_SIZE} bytes."
-                )
-
-                generation.save()
-
-                return Response(
-                    {
-                        "status": "failed",
-                        "generation_id": generation.id,
-                        "meshy_task_id": (
-                            generation.meshy_task_id
-                        ),
-                        "progress": 100,
-                        "model_url": None,
-                        "error_message": (
-                            generation.error_message
-                        ),
-                    }
-                )
-
-            # ------------------------------------------------
-            # Make sure content exists
-            # ------------------------------------------------
-
-            if not glb_content:
-
-                generation.status = "failed"
-
-                generation.error_message = (
-                    "Meshy returned an empty GLB file."
-                )
-
-                generation.save()
-
-                return Response(
-                    {
-                        "status": "failed",
-                        "generation_id": generation.id,
-                        "meshy_task_id": (
-                            generation.meshy_task_id
-                        ),
-                        "progress": 100,
-                        "model_url": None,
-                        "error_message": (
-                            generation.error_message
-                        ),
-                    }
-                )
-
-            # =================================================
-            # SAVE GLB TO DJANGO STORAGE
-            # =================================================
-
-            filename = (
-                f"{generation.id}.glb"
-            )
-
-            try:
-
-                generation.model_file.save(
-                    filename,
-                    ContentFile(
-                        glb_content
-                    ),
-                    save=False,
-                )
-
-                generation.status = "succeeded"
-
-                generation.error_message = None
-
-                generation.save()
-
-            except Exception as exc:
-
-                generation.status = "failed"
-
-                generation.error_message = (
-                    "3D model was generated, "
-                    "but Django could not save "
-                    f"the GLB file: {str(exc)}"
-                )
-
-                generation.save()
-
-                return Response(
-                    {
-                        "status": "failed",
-                        "generation_id": generation.id,
-                        "meshy_task_id": (
-                            generation.meshy_task_id
-                        ),
-                        "progress": 100,
-                        "model_url": None,
-                        "error_message": (
-                            generation.error_message
-                        ),
-                    }
-                )
-
-        # ====================================================
-        # MODEL WAS ALREADY STORED
-        # ====================================================
-
-        else:
-
-            generation.status = "succeeded"
-
-            generation.error_message = None
-
-            generation.save()
-
-        # ====================================================
-        # BUILD PERMANENT MODEL URL
-        # ====================================================
-
-        permanent_url = None
-
-        if generation.model_file:
-
-            permanent_url = request.build_absolute_uri(
-                generation.model_file.url
-            )
-
-        # ====================================================
-        # SUCCESS RESPONSE
-        # ====================================================
+        generation.save(
+            update_fields=[
+                "model_url",
+                "status",
+                "error_message",
+            ]
+        )
 
         return Response(
             {
                 "status": "succeeded",
                 "generation_id": generation.id,
-                "meshy_task_id": (
-                    generation.meshy_task_id
-                ),
+                "meshy_task_id": generation.meshy_task_id,
                 "progress": 100,
-                "model_url": permanent_url,
+                "model_url": glb_url,
                 "error_message": None,
             }
         )
@@ -513,7 +297,7 @@ def check_3d_status(request, generation_id):
     # MESHY FAILED
     # ========================================================
 
-    elif meshy_status in [
+    if meshy_status in [
         "FAILED",
         "CANCELED",
     ]:
@@ -527,11 +311,11 @@ def check_3d_status(request, generation_id):
 
         generation.error_message = (
             task_error.get("message")
-            or
-            task_error.get("detail")
-            or
-            f"Meshy task ended with status: "
-            f"{meshy_status}"
+            or task_error.get("detail")
+            or (
+                f"Meshy task ended with status: "
+                f"{meshy_status}"
+            )
         )
 
         generation.save()
@@ -540,9 +324,7 @@ def check_3d_status(request, generation_id):
             {
                 "status": "failed",
                 "generation_id": generation.id,
-                "meshy_task_id": (
-                    generation.meshy_task_id
-                ),
+                "meshy_task_id": generation.meshy_task_id,
                 "progress": progress,
                 "model_url": None,
                 "error_message": (
@@ -555,21 +337,21 @@ def check_3d_status(request, generation_id):
     # STILL PROCESSING
     # ========================================================
 
-    else:
+    generation.status = "processing"
 
-        generation.status = "processing"
+    generation.save(
+        update_fields=[
+            "status",
+        ]
+    )
 
-        generation.save()
-
-        return Response(
-            {
-                "status": "processing",
-                "generation_id": generation.id,
-                "meshy_task_id": (
-                    generation.meshy_task_id
-                ),
-                "progress": progress,
-                "model_url": None,
-                "error_message": None,
-            }
-        )
+    return Response(
+        {
+            "status": "processing",
+            "generation_id": generation.id,
+            "meshy_task_id": generation.meshy_task_id,
+            "progress": progress,
+            "model_url": None,
+            "error_message": None,
+        }
+    )
