@@ -28,28 +28,28 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 # ==================================================
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv("SECRET_KEY")
 
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = os.getenv(
-    'ALLOWED_HOSTS',
-    'heritagehub-backend1.onrender.com,127.0.0.1,localhost'
-).split(',')
+    "ALLOWED_HOSTS",
+    "heritagehub-backend1.onrender.com,127.0.0.1,localhost"
+).split(",")
 
 
 # ==================================================
 # AI CONFIGURATION
 # ==================================================
 
-AI_API_KEY = os.getenv('AI_API_KEY')
+AI_API_KEY = os.getenv("AI_API_KEY")
 
 AI_MODEL_NAME = os.getenv(
-    'AI_MODEL_NAME',
-    'gemini-3.5-flash-lite'
+    "AI_MODEL_NAME",
+    "gemini-3.5-flash-lite"
 )
 
-MESHY_API_KEY = os.getenv('MESHY_API_KEY')
+MESHY_API_KEY = os.getenv("MESHY_API_KEY")
 
 
 # ==================================================
@@ -62,37 +62,37 @@ INSTALLED_APPS = [
     # Django
     # ------------------------------
 
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
 
     # ------------------------------
     # Third-party
     # ------------------------------
 
-    'rest_framework',
-    'corsheaders',
+    "rest_framework",
+    "corsheaders",
 
-    'cloudinary_storage',
-    'cloudinary',
+    "cloudinary_storage",
+    "cloudinary",
 
     # ------------------------------
     # HeritageHub apps
     # ------------------------------
 
-    'accounts',
-    'heritage',
-    'community',
-    'ai_assistant',
-    'dashboard',
-    'shopping',
-    'explore',
-    'learn',
-    'threed',
-    'canvas',
+    "accounts",
+    "heritage",
+    "community",
+    "ai_assistant",
+    "dashboard",
+    "shopping",
+    "explore",
+    "learn",
+    "threed",
+    "canvas",
 ]
 
 
@@ -102,23 +102,24 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
 
-    'corsheaders.middleware.CorsMiddleware',
+    # CORS MUST COME BEFORE CommonMiddleware
+    "corsheaders.middleware.CorsMiddleware",
 
-    'django.middleware.security.SecurityMiddleware',
+    "django.middleware.security.SecurityMiddleware",
 
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    "django.contrib.sessions.middleware.SessionMiddleware",
 
-    'django.middleware.common.CommonMiddleware',
+    "django.middleware.common.CommonMiddleware",
 
-    'django.middleware.csrf.CsrfViewMiddleware',
+    "django.middleware.csrf.CsrfViewMiddleware",
 
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
 
-    'django.contrib.messages.middleware.MessageMiddleware',
+    "django.contrib.messages.middleware.MessageMiddleware",
 
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
 
@@ -126,7 +127,7 @@ MIDDLEWARE = [
 # URL CONFIGURATION
 # ==================================================
 
-ROOT_URLCONF = 'heritagehub.urls'
+ROOT_URLCONF = "heritagehub.urls"
 
 
 # ==================================================
@@ -136,21 +137,21 @@ ROOT_URLCONF = 'heritagehub.urls'
 TEMPLATES = [
 
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
 
-        'DIRS': [],
+        "DIRS": [],
 
-        'APP_DIRS': True,
+        "APP_DIRS": True,
 
-        'OPTIONS': {
+        "OPTIONS": {
 
-            'context_processors': [
+            "context_processors": [
 
-                'django.template.context_processors.request',
+                "django.template.context_processors.request",
 
-                'django.contrib.auth.context_processors.auth',
+                "django.contrib.auth.context_processors.auth",
 
-                'django.contrib.messages.context_processors.messages',
+                "django.contrib.messages.context_processors.messages",
 
             ],
         },
@@ -162,7 +163,7 @@ TEMPLATES = [
 # WSGI
 # ==================================================
 
-WSGI_APPLICATION = 'heritagehub.wsgi.application'
+WSGI_APPLICATION = "heritagehub.wsgi.application"
 
 
 # ==================================================
@@ -171,9 +172,9 @@ WSGI_APPLICATION = 'heritagehub.wsgi.application'
 
 DATABASES = {
 
-    'default': dj_database_url.config(
+    "default": dj_database_url.config(
 
-        default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
 
         conn_max_age=600,
 
@@ -189,23 +190,23 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = [
 
     {
-        'NAME':
-        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME":
+        "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
 
     {
-        'NAME':
-        'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME":
+        "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
 
     {
-        'NAME':
-        'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME":
+        "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
 
     {
-        'NAME':
-        'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME":
+        "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 
 ]
@@ -215,9 +216,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # INTERNATIONALIZATION
 # ==================================================
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -228,16 +229,16 @@ USE_TZ = True
 # CUSTOM USER MODEL
 # ==================================================
 
-AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = "accounts.User"
 
 
 # ==================================================
 # STATIC FILES
 # ==================================================
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 # ==================================================
@@ -246,21 +247,19 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 CLOUDINARY_STORAGE = {
 
-    'CLOUD_NAME': os.getenv(
-        'CLOUDINARY_CLOUD_NAME'
+    "CLOUD_NAME": os.getenv(
+        "CLOUDINARY_CLOUD_NAME"
     ),
 
-    'API_KEY': os.getenv(
-        'CLOUDINARY_API_KEY'
+    "API_KEY": os.getenv(
+        "CLOUDINARY_API_KEY"
     ),
 
-    'API_SECRET': os.getenv(
-        'CLOUDINARY_API_SECRET'
+    "API_SECRET": os.getenv(
+        "CLOUDINARY_API_SECRET"
     ),
 
-    # Important for audio/video uploads
-    'RESOURCE_TYPE': 'auto',
-
+    "RESOURCE_TYPE": "auto",
 }
 
 
@@ -270,17 +269,17 @@ CLOUDINARY_STORAGE = {
 
 STORAGES = {
 
-    'default': {
+    "default": {
 
-        'BACKEND':
-        'cloudinary_storage.storage.MediaCloudinaryStorage',
+        "BACKEND":
+        "cloudinary_storage.storage.MediaCloudinaryStorage",
 
     },
 
-    'staticfiles': {
+    "staticfiles": {
 
-        'BACKEND':
-        'whitenoise.storage.CompressedManifestStaticFilesStorage',
+        "BACKEND":
+        "whitenoise.storage.CompressedManifestStaticFilesStorage",
 
     },
 
@@ -291,38 +290,48 @@ STORAGES = {
 # MEDIA
 # ==================================================
 
-MEDIA_URL = '/media/'
+MEDIA_URL = "/media/"
 
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / "media"
 
 
 # ==================================================
-# CORS
+# CORS CONFIGURATION
 # ==================================================
 
 CORS_ALLOWED_ORIGINS = [
 
     # Production frontend
-    'https://heritagehub-frontend1.vercel.app',
+    "https://heritagehub-frontend1.vercel.app",
 
     # Local development
-    'http://localhost:5173',
+    "http://localhost:5173",
 
-    'http://localhost:3000',
+    "http://localhost:3000",
 
+    "http://127.0.0.1:5173",
+
+    "http://127.0.0.1:3000",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
 
 
 # ==================================================
-# CSRF
+# CSRF CONFIGURATION
 # ==================================================
 
 CSRF_TRUSTED_ORIGINS = [
 
-    'https://heritagehub-frontend1.vercel.app',
+    "https://heritagehub-frontend1.vercel.app",
 
+    "http://localhost:5173",
+
+    "http://localhost:3000",
+
+    "http://127.0.0.1:5173",
+
+    "http://127.0.0.1:3000",
 ]
 
 
@@ -332,9 +341,9 @@ CSRF_TRUSTED_ORIGINS = [
 
 REST_FRAMEWORK = {
 
-    'DEFAULT_AUTHENTICATION_CLASSES': (
+    "DEFAULT_AUTHENTICATION_CLASSES": (
 
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
 
     ),
 
@@ -346,7 +355,7 @@ REST_FRAMEWORK = {
 # ==================================================
 
 EMAIL_BACKEND = (
-    'django.core.mail.backends.console.EmailBackend'
+    "django.core.mail.backends.console.EmailBackend"
 )
 
 
@@ -354,4 +363,4 @@ EMAIL_BACKEND = (
 # DEFAULT PRIMARY KEY
 # ==================================================
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
