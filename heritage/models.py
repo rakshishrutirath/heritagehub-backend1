@@ -129,17 +129,34 @@ class HeritageRecord(models.Model):
         return self.title
 
 
-# Generate QR code automatically when an approved record
-# does not already have one.
+# QR CODE GENERATION
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
 @receiver(post_save, sender=HeritageRecord)
 def create_qr_code(sender, instance, created, **kwargs):
+    """
+    Generate a QR code whenever a HeritageRecord is approved
+    and does not already have a QR code.
+
+    If QR generation fails, the approval itself will not fail.
+    """
+
     if instance.status == 'approved' and not instance.qr_code:
         from .utils import generate_qr_for_record
 
-        generate_qr_for_record(instance)
+        try:
+            generate_qr_for_record(instance)
 
-        instance.save(update_fields=['qr_code'])
+            # Save only the QR field to avoid triggering
+            # unnecessary updates to other fields.
+            instance.save(update_fields=['qr_code'])
+
+        except Exception as e:
+            # QR failure should NOT cause the approval request
+            # to return HTTP 500.
+            print(
+                f"QR generation failed for HeritageRecord "
+                f"{instance.id}: {e}"
+            )
