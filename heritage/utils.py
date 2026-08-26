@@ -4,7 +4,10 @@ from django.core.files import File
 
 
 def generate_qr_for_record(record):
-    base_url = "https://heritagehub-backend1.onrender.com"
+    # Your live HeritageHub frontend
+    base_url = "https://heritagehub-frontend1.vercel.app"
+
+    # Public heritage record URL
     url = f"{base_url}/heritage/{record.id}/"
 
     qr_img = qrcode.make(url)
