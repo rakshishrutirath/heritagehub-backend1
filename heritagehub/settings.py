@@ -102,7 +102,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
 
-    # CORS MUST COME BEFORE CommonMiddleware
+    # IMPORTANT:
+    # CORS middleware must be near the top.
     "corsheaders.middleware.CorsMiddleware",
 
     "django.middleware.security.SecurityMiddleware",
@@ -260,6 +261,7 @@ CLOUDINARY_STORAGE = {
     ),
 
     "RESOURCE_TYPE": "auto",
+
 }
 
 
@@ -299,9 +301,9 @@ MEDIA_ROOT = BASE_DIR / "media"
 # CORS CONFIGURATION
 # ==================================================
 
+# Production frontend
 CORS_ALLOWED_ORIGINS = [
 
-    # Production frontend
     "https://heritagehub-frontend1.vercel.app",
 
     # Local development
@@ -309,16 +311,57 @@ CORS_ALLOWED_ORIGINS = [
 
     "http://localhost:3000",
 
-    "http://127.0.0.1:5173",
-
-    "http://127.0.0.1:3000",
 ]
 
+
+# Allow cookies/authentication across origins
 CORS_ALLOW_CREDENTIALS = True
 
 
+# HTTP methods allowed by the frontend
+CORS_ALLOW_METHODS = [
+
+    "DELETE",
+
+    "GET",
+
+    "OPTIONS",
+
+    "PATCH",
+
+    "POST",
+
+    "PUT",
+
+]
+
+
+# Headers allowed from the frontend
+CORS_ALLOW_HEADERS = [
+
+    "accept",
+
+    "accept-encoding",
+
+    "authorization",
+
+    "content-type",
+
+    "dnt",
+
+    "origin",
+
+    "user-agent",
+
+    "x-csrftoken",
+
+    "x-requested-with",
+
+]
+
+
 # ==================================================
-# CSRF CONFIGURATION
+# CSRF
 # ==================================================
 
 CSRF_TRUSTED_ORIGINS = [
@@ -329,14 +372,11 @@ CSRF_TRUSTED_ORIGINS = [
 
     "http://localhost:3000",
 
-    "http://127.0.0.1:5173",
-
-    "http://127.0.0.1:3000",
 ]
 
 
 # ==================================================
-# REST FRAMEWORK
+# DJANGO REST FRAMEWORK
 # ==================================================
 
 REST_FRAMEWORK = {
