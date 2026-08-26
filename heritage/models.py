@@ -6,12 +6,20 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
+# ============================================================
+# CATEGORY
+# ============================================================
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
 
+
+# ============================================================
+# LANGUAGE
+# ============================================================
 
 class Language(models.Model):
     name = models.CharField(max_length=100)
@@ -20,14 +28,25 @@ class Language(models.Model):
         return self.name
 
 
+# ============================================================
+# LOCATION
+# ============================================================
+
 class Location(models.Model):
     village_or_area = models.CharField(max_length=150)
     district = models.CharField(max_length=100)
-    state = models.CharField(max_length=100, default="Odisha")
+    state = models.CharField(
+        max_length=100,
+        default="Odisha"
+    )
 
     def __str__(self):
         return f"{self.village_or_area}, {self.district}"
 
+
+# ============================================================
+# HERITAGE RECORD
+# ============================================================
 
 class HeritageRecord(models.Model):
 
@@ -37,15 +56,25 @@ class HeritageRecord(models.Model):
         ("rejected", "Needs Correction"),
     )
 
+    # --------------------------------------------------------
+    # Basic information
+    # --------------------------------------------------------
+
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
         editable=False
     )
 
-    title = models.CharField(max_length=200)
+    title = models.CharField(
+        max_length=200
+    )
 
     description = models.TextField()
+
+    # --------------------------------------------------------
+    # Classification
+    # --------------------------------------------------------
 
     category = models.ForeignKey(
         Category,
@@ -66,11 +95,19 @@ class HeritageRecord(models.Model):
         blank=True
     )
 
+    # --------------------------------------------------------
+    # Contributor
+    # --------------------------------------------------------
+
     contributor = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="submissions"
     )
+
+    # --------------------------------------------------------
+    # Media
+    # --------------------------------------------------------
 
     image = models.ImageField(
         upload_to="heritage_images/",
@@ -84,7 +121,10 @@ class HeritageRecord(models.Model):
         null=True
     )
 
+    # --------------------------------------------------------
     # AI generated information
+    # --------------------------------------------------------
+
     ai_summary = models.TextField(
         blank=True,
         null=True
@@ -101,19 +141,24 @@ class HeritageRecord(models.Model):
         null=True
     )
 
+    # --------------------------------------------------------
     # User consent
+    # --------------------------------------------------------
+
     consent_given = models.BooleanField(
         default=False
     )
 
-    # Verification status
+    # --------------------------------------------------------
+    # Verification
+    # --------------------------------------------------------
+
     status = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,
         default="pending"
     )
 
-    # Person who approved/rejected the record
     verified_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
@@ -122,16 +167,27 @@ class HeritageRecord(models.Model):
         related_name="verified_records"
     )
 
-    # QR code generated after approval
+    # --------------------------------------------------------
+    # QR CODE
+    # --------------------------------------------------------
+
     qr_code = models.ImageField(
         upload_to="qr_codes/",
         blank=True,
         null=True
     )
 
+    # --------------------------------------------------------
+    # Timestamp
+    # --------------------------------------------------------
+
     created_at = models.DateTimeField(
         auto_now_add=True
     )
+
+    # --------------------------------------------------------
+    # Database indexes
+    # --------------------------------------------------------
 
     class Meta:
         indexes = [
@@ -144,19 +200,24 @@ class HeritageRecord(models.Model):
 
 
 # ============================================================
-# QR CODE GENERATION
+# AUTOMATIC QR CODE GENERATION
 # ============================================================
 
 @receiver(post_save, sender=HeritageRecord)
 def create_qr_code(sender, instance, created, **kwargs):
 
-    # Generate QR only when the record is approved
-    # and does not already have a QR code.
-    if instance.status == "approved" and not instance.qr_code:
+    # Only generate QR after approval
+    if (
+        instance.status == "approved"
+        and not instance.qr_code
+    ):
 
         from .utils import generate_qr_for_record
 
+        # Generate QR image
         generate_qr_for_record(instance)
 
-        # Save only the QR field to avoid unnecessary database updates
-        instance.save(update_fields=["qr_code"])
+        # Save only the QR code field
+        instance.save(
+            update_fields=["qr_code"]
+        )
