@@ -2,6 +2,9 @@ from django.db import models
 from django.conf import settings
 import uuid
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -20,17 +23,18 @@ class Language(models.Model):
 class Location(models.Model):
     village_or_area = models.CharField(max_length=150)
     district = models.CharField(max_length=100)
-    state = models.CharField(max_length=100, default='Odisha')
+    state = models.CharField(max_length=100, default="Odisha")
 
     def __str__(self):
         return f"{self.village_or_area}, {self.district}"
 
 
 class HeritageRecord(models.Model):
+
     STATUS_CHOICES = (
-        ('pending', 'Pending Review'),
-        ('approved', 'Approved'),
-        ('rejected', 'Needs Correction'),
+        ("pending", "Pending Review"),
+        ("approved", "Approved"),
+        ("rejected", "Needs Correction"),
     )
 
     id = models.UUIDField(
@@ -40,6 +44,7 @@ class HeritageRecord(models.Model):
     )
 
     title = models.CharField(max_length=200)
+
     description = models.TextField()
 
     category = models.ForeignKey(
@@ -64,21 +69,22 @@ class HeritageRecord(models.Model):
     contributor = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name='submissions'
+        related_name="submissions"
     )
 
     image = models.ImageField(
-        upload_to='heritage_images/',
+        upload_to="heritage_images/",
         blank=True,
         null=True
     )
 
     audio = models.FileField(
-        upload_to='heritage_audio/',
+        upload_to="heritage_audio/",
         blank=True,
         null=True
     )
 
+    # AI generated information
     ai_summary = models.TextField(
         blank=True,
         null=True
@@ -95,68 +101,62 @@ class HeritageRecord(models.Model):
         null=True
     )
 
-    consent_given = models.BooleanField(default=False)
+    # User consent
+    consent_given = models.BooleanField(
+        default=False
+    )
 
+    # Verification status
     status = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,
-        default='pending'
+        default="pending"
     )
 
+    # Person who approved/rejected the record
     verified_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='verified_records'
+        related_name="verified_records"
     )
 
+    # QR code generated after approval
     qr_code = models.ImageField(
-        upload_to='qr_codes/',
+        upload_to="qr_codes/",
         blank=True,
         null=True
     )
 
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
 
     class Meta:
         indexes = [
-            models.Index(fields=['status']),
-            models.Index(fields=['title']),
+            models.Index(fields=["status"]),
+            models.Index(fields=["title"]),
         ]
 
     def __str__(self):
         return self.title
 
 
+# ============================================================
 # QR CODE GENERATION
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-
+# ============================================================
 
 @receiver(post_save, sender=HeritageRecord)
 def create_qr_code(sender, instance, created, **kwargs):
-    """
-    Generate a QR code whenever a HeritageRecord is approved
-    and does not already have a QR code.
 
-    If QR generation fails, the approval itself will not fail.
-    """
+    # Generate QR only when the record is approved
+    # and does not already have a QR code.
+    if instance.status == "approved" and not instance.qr_code:
 
-    if instance.status == 'approved' and not instance.qr_code:
         from .utils import generate_qr_for_record
 
-        try:
-            generate_qr_for_record(instance)
+        generate_qr_for_record(instance)
 
-            # Save only the QR field to avoid triggering
-            # unnecessary updates to other fields.
-            instance.save(update_fields=['qr_code'])
-
-        except Exception as e:
-            # QR failure should NOT cause the approval request
-            # to return HTTP 500.
-            print(
-                f"QR generation failed for HeritageRecord "
-                f"{instance.id}: {e}"
-            )
+        # Save only the QR field to avoid unnecessary database updates
+        instance.save(update_fields=["qr_code"])
