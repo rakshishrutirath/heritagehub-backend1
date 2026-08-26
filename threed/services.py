@@ -6,7 +6,7 @@ from django.conf import settings
 
 
 # ============================================================
-# MESHY API
+# MESHY API URLS
 # ============================================================
 
 MESHY_CREATE_URL = (
@@ -19,10 +19,12 @@ MESHY_TASK_URL = (
 
 
 # ============================================================
-# FILE SIZE LIMIT
+# MAXIMUM GLB SIZE
 # ============================================================
 
-# Your Django/Cloudinary setup currently allows 10 MB.
+# Current Cloudinary/Django limit:
+# 10 MB
+
 MAX_MODEL_SIZE = 10 * 1024 * 1024
 
 
@@ -32,8 +34,8 @@ MAX_MODEL_SIZE = 10 * 1024 * 1024
 
 def image_file_to_data_uri(image_field):
     """
-    Convert Django uploaded image into a base64 data URI
-    that Meshy can accept.
+    Convert a Django uploaded image into a base64
+    data URI for Meshy.
     """
 
     mime_type, _ = mimetypes.guess_type(
@@ -64,10 +66,16 @@ def image_file_to_data_uri(image_field):
 def create_meshy_task(image_field):
 
     # --------------------------------------------------------
-    # Check API key
+    # Check Meshy API key
     # --------------------------------------------------------
 
-    if not settings.MESHY_API_KEY:
+    api_key = getattr(
+        settings,
+        "MESHY_API_KEY",
+        None
+    )
+
+    if not api_key:
 
         return {
             "error": True,
@@ -75,10 +83,11 @@ def create_meshy_task(image_field):
         }
 
     # --------------------------------------------------------
-    # Convert image to data URI
+    # Convert image
     # --------------------------------------------------------
 
     try:
+
         image_data_uri = image_file_to_data_uri(
             image_field
         )
@@ -99,53 +108,50 @@ def create_meshy_task(image_field):
 
     headers = {
         "Authorization": (
-            f"Bearer {settings.MESHY_API_KEY}"
+            f"Bearer {api_key}"
         ),
         "Content-Type": "application/json",
     }
 
-    # --------------------------------------------------------
-    # Meshy request
+    # ========================================================
+    # MESHY REQUEST
+    # ========================================================
+    #
+    # Smart Topology is being used to keep the model
+    # lightweight.
     #
     # IMPORTANT:
+    # image_enhancement is NOT supported with
+    # model_type = smart-topology, so it is NOT included.
     #
-    # Smart Topology + meshy-t2 allows us to control
-    # the polygon count.
-    #
-    # Lower polygon count = much smaller GLB.
-    # --------------------------------------------------------
+    # ========================================================
 
     body = {
 
         "image_url": image_data_uri,
 
-        # Use Smart Topology for a lightweight model
+        # Smart Topology
         "model_type": "smart-topology",
 
-        # Current recommended Smart Topology model
+        # Meshy Smart Topology model
         "ai_model": "meshy-t2",
 
-        # Keep model small enough for your 10 MB limit
-        #
-        # 4,000 is the safest starting point.
+        # Keep polygon count relatively low
         "target_polycount": 4000,
 
-        # We still want textures
+        # Generate textures
         "should_texture": True,
 
-        # 2K is the lowest supported texture resolution
-        # and is much smaller than 4K/8K.
+        # Keep texture size reasonable
         "texture_resolution": "2k",
 
         # Only generate GLB
-        "target_formats": ["glb"],
+        "target_formats": [
+            "glb"
+        ],
 
-        # Don't generate unnecessary PBR maps
+        # Don't request additional PBR maps
         "enable_pbr": False,
-
-        # Automatically improve the input image
-        "image_enhancement": True,
-
     }
 
     # --------------------------------------------------------
@@ -158,7 +164,7 @@ def create_meshy_task(image_field):
             MESHY_CREATE_URL,
             headers=headers,
             json=body,
-            timeout=90,
+            timeout=120,
         )
 
     except requests.RequestException as exc:
@@ -172,7 +178,7 @@ def create_meshy_task(image_field):
         }
 
     # --------------------------------------------------------
-    # Check HTTP status
+    # Check response status
     # --------------------------------------------------------
 
     if response.status_code not in (
@@ -191,7 +197,7 @@ def create_meshy_task(image_field):
         }
 
     # --------------------------------------------------------
-    # Parse JSON
+    # Parse response
     # --------------------------------------------------------
 
     try:
@@ -211,7 +217,9 @@ def create_meshy_task(image_field):
     # Get task ID
     # --------------------------------------------------------
 
-    task_id = data.get("result")
+    task_id = data.get(
+        "result"
+    )
 
     if not task_id:
 
@@ -233,7 +241,7 @@ def create_meshy_task(image_field):
 
 
 # ============================================================
-# CHECK MESHY TASK
+# CHECK MESHY TASK STATUS
 # ============================================================
 
 def get_meshy_task(task_id):
@@ -242,7 +250,13 @@ def get_meshy_task(task_id):
     # Check API key
     # --------------------------------------------------------
 
-    if not settings.MESHY_API_KEY:
+    api_key = getattr(
+        settings,
+        "MESHY_API_KEY",
+        None
+    )
+
+    if not api_key:
 
         return {
             "error": True,
@@ -255,20 +269,28 @@ def get_meshy_task(task_id):
 
     headers = {
         "Authorization": (
-            f"Bearer {settings.MESHY_API_KEY}"
+            f"Bearer {api_key}"
         )
     }
 
     # --------------------------------------------------------
-    # Request task status
+    # Task URL
+    # --------------------------------------------------------
+
+    url = MESHY_TASK_URL.format(
+        task_id
+    )
+
+    # --------------------------------------------------------
+    # Request status
     # --------------------------------------------------------
 
     try:
 
         response = requests.get(
-            MESHY_TASK_URL.format(task_id),
+            url,
             headers=headers,
-            timeout=30,
+            timeout=60,
         )
 
     except requests.RequestException as exc:
@@ -314,7 +336,7 @@ def get_meshy_task(task_id):
         }
 
     # --------------------------------------------------------
-    # Return task data
+    # Return result
     # --------------------------------------------------------
 
     return {
@@ -329,21 +351,10 @@ def get_meshy_task(task_id):
 
 def download_glb(glb_url):
     """
-    Download the GLB file from Meshy.
+    Download the generated GLB from Meshy.
 
-    Returns:
-        {
-            "error": False,
-            "content": bytes,
-            "size": int
-        }
-
-    or:
-
-        {
-            "error": True,
-            "detail": str
-        }
+    The download is performed in chunks so we can stop
+    if the model is already larger than 10 MB.
     """
 
     if not glb_url:
@@ -373,11 +384,8 @@ def download_glb(glb_url):
             )
         }
 
-    # --------------------------------------------------------
-    # Download in chunks
-    # --------------------------------------------------------
-
     chunks = []
+
     total_size = 0
 
     try:
@@ -389,12 +397,16 @@ def download_glb(glb_url):
             if not chunk:
                 continue
 
-            chunks.append(chunk)
+            chunks.append(
+                chunk
+            )
 
-            total_size += len(chunk)
+            total_size += len(
+                chunk
+            )
 
             # ------------------------------------------------
-            # Stop if already larger than allowed size.
+            # Stop if file exceeds 10 MB
             # ------------------------------------------------
 
             if total_size > MAX_MODEL_SIZE:
@@ -402,12 +414,10 @@ def download_glb(glb_url):
                 return {
                     "error": True,
                     "detail": (
-                        "Meshy generated a GLB larger than "
-                        "the 10 MB storage limit. "
-                        f"Generated size: "
-                        f"{total_size / (1024 * 1024):.2f} MB. "
-                        "Try generating with a lower "
-                        "polygon count."
+                        "Meshy generated a GLB larger "
+                        "than the 10 MB storage limit. "
+                        f"Current size: "
+                        f"{total_size / (1024 * 1024):.2f} MB."
                     ),
                     "size": total_size,
                 }
@@ -416,10 +426,16 @@ def download_glb(glb_url):
 
         response.close()
 
-    content = b"".join(chunks)
+    # --------------------------------------------------------
+    # Combine chunks
+    # --------------------------------------------------------
+
+    content = b"".join(
+        chunks
+    )
 
     # --------------------------------------------------------
-    # Final safety check
+    # Final size check
     # --------------------------------------------------------
 
     if len(content) > MAX_MODEL_SIZE:
@@ -432,6 +448,18 @@ def download_glb(glb_url):
                 f"{len(content) / (1024 * 1024):.2f} MB."
             ),
             "size": len(content),
+        }
+
+    # --------------------------------------------------------
+    # Empty file check
+    # --------------------------------------------------------
+
+    if not content:
+
+        return {
+            "error": True,
+            "detail": "Meshy returned an empty GLB file.",
+            "size": 0,
         }
 
     # --------------------------------------------------------
