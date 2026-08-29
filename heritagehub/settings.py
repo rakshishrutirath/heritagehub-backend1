@@ -39,11 +39,14 @@ ALLOWED_HOSTS = [
     host.strip()
     for host in os.getenv(
         'ALLOWED_HOSTS',
-        'heritagehub-backend1.onrender.com,127.0.0.1,localhost'
+        'rakshi.pythonanywhere.com,heritagehub-backend1.onrender.com,127.0.0.1,localhost'
     ).split(',')
     if host.strip()
 ]
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://rakshi.pythonanywhere.com',
+    'https://heritagehub-backend1.onrender.com',
+]
 
 # ==================================================
 # AI CONFIGURATION
