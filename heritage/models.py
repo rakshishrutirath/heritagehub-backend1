@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 import uuid
 
 from django.db.models.signals import post_save
@@ -7,11 +8,24 @@ from django.dispatch import receiver
 
 
 # ============================================================
+# QR CODE LOCAL STORAGE
+# ============================================================
+
+qr_storage = FileSystemStorage(
+    location="/home/rakshi/heritagehub-backend1/media/qr_codes",
+    base_url="/media/qr_codes/"
+)
+
+
+# ============================================================
 # CATEGORY
 # ============================================================
 
 class Category(models.Model):
-    name = models.CharField(max_length=100)
+
+    name = models.CharField(
+        max_length=100
+    )
 
     def __str__(self):
         return self.name
@@ -22,7 +36,10 @@ class Category(models.Model):
 # ============================================================
 
 class Language(models.Model):
-    name = models.CharField(max_length=100)
+
+    name = models.CharField(
+        max_length=100
+    )
 
     def __str__(self):
         return self.name
@@ -33,9 +50,14 @@ class Language(models.Model):
 # ============================================================
 
 class Location(models.Model):
-    village_or_area = models.CharField(max_length=150)
 
-    district = models.CharField(max_length=100)
+    village_or_area = models.CharField(
+        max_length=150
+    )
+
+    district = models.CharField(
+        max_length=100
+    )
 
     state = models.CharField(
         max_length=100,
@@ -172,9 +194,12 @@ class HeritageRecord(models.Model):
     # --------------------------------------------------------
     # QR CODE
     # --------------------------------------------------------
+    # QR code is stored locally on PythonAnywhere.
+    # This avoids Cloudinary being used for QR generation.
 
     qr_code = models.ImageField(
-        upload_to="qr_codes/",
+        storage=qr_storage,
+        upload_to="",
         blank=True,
         null=True
     )
@@ -192,9 +217,14 @@ class HeritageRecord(models.Model):
     # --------------------------------------------------------
 
     class Meta:
+
         indexes = [
-            models.Index(fields=["status"]),
-            models.Index(fields=["title"]),
+            models.Index(
+                fields=["status"]
+            ),
+            models.Index(
+                fields=["title"]
+            ),
         ]
 
     def __str__(self):
@@ -205,10 +235,21 @@ class HeritageRecord(models.Model):
 # AUTOMATIC QR CODE GENERATION
 # ============================================================
 
-@receiver(post_save, sender=HeritageRecord)
-def create_qr_code(sender, instance, created, **kwargs):
+@receiver(
+    post_save,
+    sender=HeritageRecord
+)
+def create_qr_code(
+    sender,
+    instance,
+    created,
+    **kwargs
+):
 
-    # Only generate QR after approval
+    # --------------------------------------------------------
+    # Generate QR only after approval
+    # --------------------------------------------------------
+
     if (
         instance.status == "approved"
         and not instance.qr_code
@@ -217,18 +258,22 @@ def create_qr_code(sender, instance, created, **kwargs):
         from .utils import generate_qr_for_record
 
         try:
+
             # Generate QR image
             generate_qr_for_record(instance)
 
-            # Save only the QR code field
+            # Save QR code only
             if instance.qr_code:
+
                 instance.save(
                     update_fields=["qr_code"]
                 )
 
         except Exception as e:
-            # QR generation must NEVER break
-            # the heritage approval process.
+
+            # QR generation should NEVER
+            # break the approval process.
+
             print(
                 f"QR generation failed for "
                 f"{instance.id}: {e}"
