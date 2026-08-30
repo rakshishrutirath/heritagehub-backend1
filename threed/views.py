@@ -1,4 +1,9 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import (
+    api_view,
+    authentication_classes,
+    permission_classes,
+)
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -14,6 +19,8 @@ from .services import (
 # ============================================================
 
 @api_view(["POST"])
+@authentication_classes([])
+@permission_classes([AllowAny])
 def generate_3d_from_image(request):
 
     image = request.FILES.get("image")
@@ -31,18 +38,47 @@ def generate_3d_from_image(request):
     # Create database record
     # --------------------------------------------------------
 
-    generation = ThreeDGeneration.objects.create(
-        image=image,
-        status="pending",
-    )
+    try:
+        generation = ThreeDGeneration.objects.create(
+            image=image,
+            status="pending",
+        )
+    except Exception as e:
+        return Response(
+            {
+                "status": "error",
+                "detail": f"Could not create generation record: {str(e)}",
+            },
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        )
 
     # --------------------------------------------------------
     # Send image to Meshy
     # --------------------------------------------------------
 
-    result = create_meshy_task(
-        generation.image
-    )
+    try:
+        result = create_meshy_task(
+            generation.image
+        )
+    except Exception as e:
+
+        generation.status = "failed"
+        generation.error_message = str(e)
+        generation.save(
+            update_fields=[
+                "status",
+                "error_message",
+            ]
+        )
+
+        return Response(
+            {
+                "status": "error",
+                "generation_id": generation.id,
+                "detail": str(e),
+            },
+            status=status.HTTP_502_BAD_GATEWAY,
+        )
 
     # --------------------------------------------------------
     # Meshy request failed
@@ -57,7 +93,12 @@ def generate_3d_from_image(request):
             or "Could not create Meshy task."
         )
 
-        generation.save()
+        generation.save(
+            update_fields=[
+                "status",
+                "error_message",
+            ]
+        )
 
         return Response(
             {
@@ -76,11 +117,41 @@ def generate_3d_from_image(request):
         "task_id"
     )
 
+    if not generation.meshy_task_id:
+
+        generation.status = "failed"
+
+        generation.error_message = (
+            "Meshy did not return a task ID."
+        )
+
+        generation.save(
+            update_fields=[
+                "status",
+                "error_message",
+            ]
+        )
+
+        return Response(
+            {
+                "status": "error",
+                "generation_id": generation.id,
+                "detail": generation.error_message,
+            },
+            status=status.HTTP_502_BAD_GATEWAY,
+        )
+
     generation.status = "processing"
 
     generation.error_message = None
 
-    generation.save()
+    generation.save(
+        update_fields=[
+            "meshy_task_id",
+            "status",
+            "error_message",
+        ]
+    )
 
     return Response(
         {
@@ -97,6 +168,8 @@ def generate_3d_from_image(request):
 # ============================================================
 
 @api_view(["GET"])
+@authentication_classes([])
+@permission_classes([AllowAny])
 def check_3d_status(
     request,
     generation_id,
@@ -132,16 +205,20 @@ def check_3d_status(
 
         # Prefer Meshy URL
         if generation.model_url:
+
             model_url = generation.model_url
 
         # Fallback to stored file
         elif generation.model_file:
 
             try:
+
                 model_url = request.build_absolute_uri(
                     generation.model_file.url
                 )
+
             except Exception:
+
                 model_url = None
 
         return Response(
@@ -178,9 +255,25 @@ def check_3d_status(
     # CHECK MESHY
     # ========================================================
 
-    result = get_meshy_task(
-        generation.meshy_task_id
-    )
+    try:
+
+        result = get_meshy_task(
+            generation.meshy_task_id
+        )
+
+    except Exception as e:
+
+        return Response(
+            {
+                "status": "error",
+                "generation_id": generation.id,
+                "meshy_task_id": generation.meshy_task_id,
+                "progress": 0,
+                "model_url": None,
+                "error_message": str(e),
+            },
+            status=status.HTTP_502_BAD_GATEWAY,
+        )
 
     # --------------------------------------------------------
     # Meshy API error
@@ -241,7 +334,12 @@ def check_3d_status(
                 "model URL was returned."
             )
 
-            generation.save()
+            generation.save(
+                update_fields=[
+                    "status",
+                    "error_message",
+                ]
+            )
 
             return Response(
                 {
@@ -256,17 +354,9 @@ def check_3d_status(
                 }
             )
 
-        # ====================================================
-        # IMPORTANT
-        #
-        # DO NOT DOWNLOAD THE GLB.
-        #
-        # Your previous code downloaded the GLB and tried
-        # to save it to Cloudinary. Your GLB was ~77 MB,
-        # while Cloudinary rejected files above 10 MB.
-        #
-        # We therefore keep Meshy's GLB URL directly.
-        # ====================================================
+        # ----------------------------------------------------
+        # Save Meshy GLB URL directly
+        # ----------------------------------------------------
 
         generation.model_url = glb_url
 
@@ -318,7 +408,12 @@ def check_3d_status(
             )
         )
 
-        generation.save()
+        generation.save(
+            update_fields=[
+                "status",
+                "error_message",
+            ]
+        )
 
         return Response(
             {
