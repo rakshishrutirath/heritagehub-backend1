@@ -34,7 +34,9 @@ class Language(models.Model):
 
 class Location(models.Model):
     village_or_area = models.CharField(max_length=150)
+
     district = models.CharField(max_length=100)
+
     state = models.CharField(
         max_length=100,
         default="Odisha"
@@ -214,10 +216,20 @@ def create_qr_code(sender, instance, created, **kwargs):
 
         from .utils import generate_qr_for_record
 
-        # Generate QR image
-        generate_qr_for_record(instance)
+        try:
+            # Generate QR image
+            generate_qr_for_record(instance)
 
-        # Save only the QR code field
-        instance.save(
-            update_fields=["qr_code"]
-        )
+            # Save only the QR code field
+            if instance.qr_code:
+                instance.save(
+                    update_fields=["qr_code"]
+                )
+
+        except Exception as e:
+            # QR generation must NEVER break
+            # the heritage approval process.
+            print(
+                f"QR generation failed for "
+                f"{instance.id}: {e}"
+            )
