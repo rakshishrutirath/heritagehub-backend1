@@ -81,10 +81,7 @@ MESHY_API_KEY = os.getenv("MESHY_API_KEY")
 
 INSTALLED_APPS = [
 
-    # ------------------------------
     # Django
-    # ------------------------------
-
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -92,20 +89,13 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    # ------------------------------
     # Third-party
-    # ------------------------------
-
     "rest_framework",
     "corsheaders",
-
     "cloudinary_storage",
     "cloudinary",
 
-    # ------------------------------
     # HeritageHub apps
-    # ------------------------------
-
     "accounts",
     "heritage",
     "community",
@@ -125,7 +115,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
 
-    # CORS should be near the top
     "corsheaders.middleware.CorsMiddleware",
 
     "django.middleware.security.SecurityMiddleware",
@@ -286,7 +275,10 @@ CLOUDINARY_API_SECRET = os.getenv(
 )
 
 
-# Cloudinary storage configuration
+# ==================================================
+# CLOUDINARY STORAGE
+# ==================================================
+
 CLOUDINARY_STORAGE = {
 
     "CLOUD_NAME": CLOUDINARY_CLOUD_NAME,
@@ -300,7 +292,22 @@ CLOUDINARY_STORAGE = {
 }
 
 
-# Explicit Cloudinary SDK configuration
+# ==================================================
+# CLOUDINARY SDK CONFIGURATION
+# ==================================================
+
+# PythonAnywhere uses an outbound HTTP/HTTPS proxy.
+# The proxy allows the Cloudinary SDK to reach
+# api.cloudinary.com.
+
+CLOUDINARY_PROXY = (
+    os.getenv("HTTPS_PROXY")
+    or os.getenv("https_proxy")
+    or os.getenv("HTTP_PROXY")
+    or os.getenv("http_proxy")
+)
+
+
 cloudinary.config(
 
     cloud_name=CLOUDINARY_CLOUD_NAME,
@@ -310,6 +317,8 @@ cloudinary.config(
     api_secret=CLOUDINARY_API_SECRET,
 
     secure=True,
+
+    api_proxy=CLOUDINARY_PROXY,
 
 )
 
@@ -367,6 +376,7 @@ CORS_ALLOWED_ORIGINS = [
     if origin.strip()
 
 ]
+
 
 CORS_ALLOW_CREDENTIALS = True
 
