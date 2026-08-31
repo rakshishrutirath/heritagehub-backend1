@@ -3,6 +3,16 @@ from django.core.files.storage import FileSystemStorage
 import uuid
 
 
+# ============================================================
+# LOCAL STORAGE
+# ============================================================
+# These 3D files should NOT go through Cloudinary.
+# They will be stored in Django's local MEDIA_ROOT.
+# ============================================================
+
+local_storage = FileSystemStorage()
+
+
 class ThreeDGeneration(models.Model):
 
     STATUS_CHOICES = (
@@ -12,9 +22,9 @@ class ThreeDGeneration(models.Model):
         ('failed', 'Failed'),
     )
 
-    # ============================================================
+    # ========================================================
     # PRIMARY KEY
-    # ============================================================
+    # ========================================================
 
     id = models.UUIDField(
         primary_key=True,
@@ -22,22 +32,20 @@ class ThreeDGeneration(models.Model):
         editable=False
     )
 
-    # ============================================================
+    # ========================================================
     # INPUT IMAGE
-    # ============================================================
-    # IMPORTANT:
-    # Use local filesystem storage for the 3D input image.
-    # This prevents Cloudinary from being used for this field.
-    # ============================================================
+    # ========================================================
+    # Stored locally instead of Cloudinary.
+    # ========================================================
 
     image = models.ImageField(
-        storage=FileSystemStorage(),
+        storage=local_storage,
         upload_to='threed/input_images/'
     )
 
-    # ============================================================
+    # ========================================================
     # MESHY TASK ID
-    # ============================================================
+    # ========================================================
 
     meshy_task_id = models.CharField(
         max_length=200,
@@ -45,9 +53,9 @@ class ThreeDGeneration(models.Model):
         null=True
     )
 
-    # ============================================================
+    # ========================================================
     # GENERATION STATUS
-    # ============================================================
+    # ========================================================
 
     status = models.CharField(
         max_length=20,
@@ -55,9 +63,12 @@ class ThreeDGeneration(models.Model):
         default='pending'
     )
 
-    # ============================================================
-    # FINAL MESHY MODEL URL
-    # ============================================================
+    # ========================================================
+    # ORIGINAL MESHY MODEL URL
+    # ========================================================
+    # We keep this for reference.
+    # The frontend should use model_file instead.
+    # ========================================================
 
     model_url = models.URLField(
         max_length=1000,
@@ -65,28 +76,34 @@ class ThreeDGeneration(models.Model):
         null=True
     )
 
-    # ============================================================
+    # ========================================================
     # ERROR MESSAGE
-    # ============================================================
+    # ========================================================
 
     error_message = models.TextField(
         blank=True,
         null=True
     )
 
-    # ============================================================
-    # OPTIONAL LOCAL GLB FILE
-    # ============================================================
+    # ========================================================
+    # LOCALLY STORED GLB MODEL
+    # ========================================================
+    # IMPORTANT:
+    # This is also stored locally.
+    # It prevents the frontend from directly accessing
+    # assets.meshy.ai and avoids the Meshy CORS problem.
+    # ========================================================
 
     model_file = models.FileField(
+        storage=local_storage,
         upload_to='3d/models/',
         null=True,
         blank=True
     )
 
-    # ============================================================
+    # ========================================================
     # TIMESTAMPS
-    # ============================================================
+    # ========================================================
 
     created_at = models.DateTimeField(
         auto_now_add=True
@@ -96,9 +113,9 @@ class ThreeDGeneration(models.Model):
         auto_now=True
     )
 
-    # ============================================================
+    # ========================================================
     # STRING REPRESENTATION
-    # ============================================================
+    # ========================================================
 
     def __str__(self):
         return (
