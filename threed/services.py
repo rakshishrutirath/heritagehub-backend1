@@ -134,13 +134,11 @@ def create_meshy_task(image_field):
     # --------------------------------------------------------
 
     try:
-
         image_data_uri = image_file_to_data_uri(
             image_field
         )
 
     except Exception as exc:
-
         return {
             "error": True,
             "detail": (
@@ -402,8 +400,10 @@ def download_glb(glb_url):
     """
     Download the generated GLB from Meshy.
 
-    The download is performed in chunks so we can
-    stop if the model exceeds 10 MB.
+    IMPORTANT:
+    PythonAnywhere can use proxy environment variables.
+    We disable environment proxy settings for this
+    direct Meshy asset download.
     """
 
     # --------------------------------------------------------
@@ -423,9 +423,27 @@ def download_glb(glb_url):
     # Download GLB
     # --------------------------------------------------------
 
+    response = None
+
     try:
 
-        response = requests.get(
+        # IMPORTANT FIX
+        # -----------------------------------------------
+        # Do NOT use the normal requests.get() here.
+        #
+        # PythonAnywhere was returning:
+        #
+        # ProxyError:
+        # Tunnel connection failed: 403 Forbidden
+        #
+        # trust_env=False prevents requests from using
+        # proxy environment variables.
+        # -----------------------------------------------
+
+        session = requests.Session()
+        session.trust_env = False
+
+        response = session.get(
             glb_url,
             timeout=180,
             stream=True,
@@ -489,7 +507,10 @@ def download_glb(glb_url):
 
     finally:
 
-        response.close()
+        if response is not None:
+            response.close()
+
+        session.close()
 
     # --------------------------------------------------------
     # Combine chunks
