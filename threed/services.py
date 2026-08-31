@@ -425,24 +425,14 @@ def download_glb(glb_url):
 
     response = None
 
+    session = requests.Session()
+
+    # IMPORTANT:
+    # Do not inherit HTTP/HTTPS proxy settings from the
+    # PythonAnywhere environment for the Meshy asset download.
+    session.trust_env = False
+
     try:
-
-        # IMPORTANT FIX
-        # -----------------------------------------------
-        # Do NOT use the normal requests.get() here.
-        #
-        # PythonAnywhere was returning:
-        #
-        # ProxyError:
-        # Tunnel connection failed: 403 Forbidden
-        #
-        # trust_env=False prevents requests from using
-        # proxy environment variables.
-        # -----------------------------------------------
-
-        session = requests.Session()
-        session.trust_env = False
-
         response = session.get(
             glb_url,
             timeout=180,
@@ -452,6 +442,8 @@ def download_glb(glb_url):
         response.raise_for_status()
 
     except requests.RequestException as exc:
+
+        session.close()
 
         return {
             "error": True,
