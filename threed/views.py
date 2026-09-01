@@ -1,7 +1,3 @@
-import requests
-
-from django.core.files.base import ContentFile
-
 from rest_framework.decorators import (
     api_view,
     authentication_classes,
@@ -16,86 +12,6 @@ from .services import (
     create_meshy_task,
     get_meshy_task,
 )
-
-
-# ============================================================
-# DOWNLOAD MESHY GLB AND SAVE LOCALLY
-# ============================================================
-
-def save_meshy_model_locally(generation, glb_url):
-    """
-    Download the GLB file from Meshy and save it
-    into the Django model_file field.
-
-    This prevents the frontend from directly accessing
-    assets.meshy.ai and avoids the browser CORS problem.
-    """
-
-    if not glb_url:
-        return {
-            "success": False,
-            "error": "No GLB URL was provided by Meshy."
-        }
-
-    try:
-        response = requests.get(
-            glb_url,
-            timeout=120
-        )
-
-        response.raise_for_status()
-
-        content = response.content
-
-        if not content:
-            return {
-                "success": False,
-                "error": "Meshy returned an empty GLB file."
-            }
-
-        # Save GLB into model_file
-        generation.model_file.save(
-            f"{generation.id}.glb",
-            ContentFile(content),
-            save=False
-        )
-
-        # Keep the original Meshy URL in the database
-        generation.model_url = glb_url
-
-        generation.status = "succeeded"
-        generation.error_message = None
-
-        generation.save(
-            update_fields=[
-                "model_file",
-                "model_url",
-                "status",
-                "error_message",
-            ]
-        )
-
-        return {
-            "success": True
-        }
-
-    except requests.RequestException as exc:
-        return {
-            "success": False,
-            "error": (
-                "Could not download GLB from Meshy: "
-                f"{str(exc)}"
-            )
-        }
-
-    except Exception as exc:
-        return {
-            "success": False,
-            "error": (
-                "Could not save generated GLB: "
-                f"{str(exc)}"
-            )
-        }
 
 
 # ============================================================
@@ -291,88 +207,37 @@ def check_3d_status(
 
         # ----------------------------------------------------
         # IMPORTANT:
-        # Always prefer our locally stored GLB.
-        # ----------------------------------------------------
-
-        if generation.model_file:
-
-            try:
-                local_model_url = request.build_absolute_uri(
-                    generation.model_file.url
-                )
-
-                return Response(
-                    {
-                        "status": "succeeded",
-                        "generation_id": generation.id,
-                        "meshy_task_id": generation.meshy_task_id,
-                        "progress": 100,
-                        "model_url": local_model_url,
-                        "error_message": None,
-                    }
-                )
-
-            except Exception:
-                pass
-
-        # ----------------------------------------------------
-        # Old generation:
-        # We have Meshy URL but no local file.
+        # Return the Meshy URL directly.
         #
-        # Download it now so the browser never accesses
-        # assets.meshy.ai directly.
+        # DO NOT download the GLB on PythonAnywhere.
         # ----------------------------------------------------
 
         if generation.model_url:
 
-            save_result = save_meshy_model_locally(
-                generation,
-                generation.model_url
-            )
-
-            if save_result["success"]:
-
-                try:
-                    local_model_url = request.build_absolute_uri(
-                        generation.model_file.url
-                    )
-
-                except Exception:
-                    local_model_url = None
-
-                return Response(
-                    {
-                        "status": "succeeded",
-                        "generation_id": generation.id,
-                        "meshy_task_id": generation.meshy_task_id,
-                        "progress": 100,
-                        "model_url": local_model_url,
-                        "error_message": None,
-                    }
-                )
-
-            generation.status = "failed"
-            generation.error_message = (
-                save_result["error"]
-            )
-
-            generation.save(
-                update_fields=[
-                    "status",
-                    "error_message",
-                ]
-            )
-
             return Response(
                 {
-                    "status": "failed",
+                    "status": "succeeded",
                     "generation_id": generation.id,
                     "meshy_task_id": generation.meshy_task_id,
                     "progress": 100,
-                    "model_url": None,
-                    "error_message": generation.error_message,
+                    "model_url": generation.model_url,
+                    "error_message": None,
                 }
             )
+
+        return Response(
+            {
+                "status": "failed",
+                "generation_id": generation.id,
+                "meshy_task_id": generation.meshy_task_id,
+                "progress": 100,
+                "model_url": None,
+                "error_message": (
+                    "Generation succeeded but no "
+                    "Meshy model URL is available."
+                ),
+            }
+        )
 
     # ========================================================
     # NO MESHY TASK
@@ -497,78 +362,29 @@ def check_3d_status(
             )
 
         # ----------------------------------------------------
-        # DOWNLOAD GLB FROM MESHY
+        # IMPORTANT:
+        #
+        # DO NOT DOWNLOAD THE GLB HERE.
+        #
+        # PythonAnywhere was getting:
+        #
+        # ProxyError
+        # Tunnel connection failed: 403 Forbidden
+        #
+        # Instead, save only the Meshy URL.
         # ----------------------------------------------------
 
-        save_result = save_meshy_model_locally(
-            generation,
-            glb_url
+        generation.model_url = glb_url
+        generation.status = "succeeded"
+        generation.error_message = None
+
+        generation.save(
+            update_fields=[
+                "model_url",
+                "status",
+                "error_message",
+            ]
         )
-
-        if not save_result["success"]:
-
-            generation.status = "failed"
-
-            generation.error_message = (
-                save_result["error"]
-            )
-
-            generation.save(
-                update_fields=[
-                    "status",
-                    "error_message",
-                ]
-            )
-
-            return Response(
-                {
-                    "status": "failed",
-                    "generation_id": generation.id,
-                    "meshy_task_id": generation.meshy_task_id,
-                    "progress": 100,
-                    "model_url": None,
-                    "error_message": (
-                        generation.error_message
-                    ),
-                }
-            )
-
-        # ----------------------------------------------------
-        # BUILD OUR BACKEND URL
-        # ----------------------------------------------------
-
-        try:
-            local_model_url = request.build_absolute_uri(
-                generation.model_file.url
-            )
-
-        except Exception as exc:
-
-            generation.status = "failed"
-            generation.error_message = (
-                "GLB was saved, but the local model URL "
-                f"could not be created: {str(exc)}"
-            )
-
-            generation.save(
-                update_fields=[
-                    "status",
-                    "error_message",
-                ]
-            )
-
-            return Response(
-                {
-                    "status": "failed",
-                    "generation_id": generation.id,
-                    "meshy_task_id": generation.meshy_task_id,
-                    "progress": 100,
-                    "model_url": None,
-                    "error_message": (
-                        generation.error_message
-                    ),
-                }
-            )
 
         # ----------------------------------------------------
         # SUCCESS
@@ -581,9 +397,10 @@ def check_3d_status(
                 "meshy_task_id": generation.meshy_task_id,
                 "progress": 100,
 
-                # IMPORTANT:
-                # This is OUR backend URL, NOT Meshy's URL.
-                "model_url": local_model_url,
+                # This is the Meshy URL.
+                # Frontend will pass this URL through
+                # /api/meshy-model.js
+                "model_url": glb_url,
 
                 "error_message": None,
             }
